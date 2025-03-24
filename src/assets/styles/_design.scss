@@ -1,0 +1,75 @@
+// src/assets/styles/_design.scss
+
+.design-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.text {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color: white;
+  font-size: 20px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hover-Buttons */
+.hover-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.mySlides:hover .hover-buttons {
+  display: block;
+}
+
+.hover-buttons .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.hover-buttons .btn:hover {
+  background-color: #45a049;
+}
+
+/* Dot Navigation */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  cursor: pointer;
+}
+
+.dot:hover, .dot.active {
+  background-color: #717171;
+}

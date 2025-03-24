@@ -35,3 +35,12 @@
     opacity: 0;
   }
 }
+@media screen and (max-width: 768px) {
+  .typewriter-container {
+    top: 35%;
+  }
+  #text-container {
+    font-size: 40px;
+  }
+
+}

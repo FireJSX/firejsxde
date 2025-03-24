@@ -23,7 +23,7 @@ iframe {
 @media screen and (max-width: 768px) {
   .video-background {
     position: absolute;
-    top: -500px; /* Verschiebt das Video unter die Navigation */
+    top: -100px; /* Verschiebt das Video unter die Navigation */
     left: 0;
     width: 100%;
     height: calc(100% - 60px); /* Der restliche Bereich nach der Navigation wird für das Video genutzt */

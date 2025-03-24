@@ -6,8 +6,9 @@
 @import 'footer';       // Styles für Footer
 @import 'newsfeed';     // Styles für Newsfeed
 @import 'videobackground'; // Styles für Video Background
+@import 'design';
 
 body{
   font-family: 'Wire One', sans-serif;
-  background-color: transparent;
+  background-color: black;
 }
