@@ -1,0 +1,58 @@
+// _footer.scss
+
+// Globale Variablen (optional, falls du Farben oder andere Werte wiederverwenden möchtest)
+$footer-bg-color: black;
+$footer-text-color: white;
+$footer-social-hover-color: white;
+$footer-icon-size: 40px;
+$footer-social-gap: 20px;
+
+// Footer Container
+.footer {
+  background-color: $footer-bg-color;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+
+  // Soziale Icons Container
+  .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $footer-social-gap;
+    padding: 10px 0;
+
+    a {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: $footer-icon-size;
+      transition: color 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      gap: 15px;
+
+      &:hover {
+        color: $footer-social-hover-color;
+        transform: scale(1.1);
+        text-decoration: none;
+      }
+    }
+  }
+
+  // Copyright Text
+  #copyright {
+    padding: 5px;
+    margin-bottom: 10px;
+    align-content: center;
+    color: $footer-text-color;
+    text-align: center;
+    font-family: 'Wire One', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,123 @@
+/* Allgemeiner Container für die Navigation */
+.nav-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Rechte Navigation (Menü) */
+.navitems {
+    position: fixed;
+    top: 5%;
+    right: 5%; /* Standard bleibt rechts */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.50);
+    padding: 10px;
+    z-index: 100;
+}
+
+.navitems div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.navitems a {
+    color: #FFF;
+    font-family: 'Wire One', sans-serif;
+    font-size: 32px;
+    text-decoration: none;
+}
+
+.navitems a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: white;
+}
+
+/* Linke Navigation (Home-Icon) */
+.navitems-left {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    background: rgba(0, 0, 0, 0.50);
+    padding: 10px;
+}
+
+.navitems-left a {
+    color: #FFF;
+    font-size: 32px;
+    text-decoration: none;
+}
+
+/* Mobile-Menü */
+#mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    width: fit-content;
+    right: 10px;
+    top: 60px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+#mobile-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+    transition: background 0.3s ease;
+}
+
+#mobile-menu a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: white;
+}
+
+/* Hamburger Icon */
+.hamburger-menu {
+    display: none;
+}
+
+/* Desktop: Mobile-Menü verstecken */
+@media screen and (min-width: 769px) {
+    #mobile-menu {
+        display: none !important;
+    }
+    .hamburger-menu {
+        display: none; /* Hamburger Menü auf größeren Bildschirmen ausblenden */
+    }
+}
+
+/* Mobile Design Anpassungen */
+@media screen and (max-width: 768px) {
+    /* Navigation mittig setzen NUR in der mobilen Ansicht */
+    .navitems {
+        text-align: center;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 7%;
+        right: 20px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* Standard Navigation ausblenden */
+    .navitems {
+        display: none;
+    }
+
+    /* Menü wird angezeigt, wenn es geöffnet ist */
+    #mobile-menu.open {
+        display: flex;
+    }
+}

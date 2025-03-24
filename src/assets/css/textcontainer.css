@@ -1,0 +1,59 @@
+/* textcontainer.css */
+
+/* Container für den Text */
+#text-container {
+    font-family: 'Courier New', Courier, monospace; /* Schriftart, die gut für "Tippen" aussieht */
+    font-size: 80px; /* Größe für den Desktop */
+    color: white; /* Textfarbe */
+    text-align: center; /* Text zentrieren */
+    line-height: 0.5;
+    display: inline-block; /* Verhindert Zeilenumbrüche */
+    white-space: nowrap; /* Verhindert Zeilenumbrüche */
+    position: relative; /* Position des Containers relativ zum übergeordneten Element */
+}
+
+/* Der blinkende Cursor */
+.cursor {
+    position: absolute;
+    right: -10px; /* Cursor direkt nach dem letzten Buchstaben */
+    bottom: 0;  /* Cursor am unteren Rand des Textcontainers */
+    display: inline-block;
+    animation: blink 0.8s step-end infinite; /* Cursor blinkt alle 0.8s */
+}
+
+/* Die Animation für das Blinken */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Style für den Typewriter Container */
+.typewriter-container {
+    position: absolute;
+    top: 50%;  /* Vertikal in der Mitte */
+    left: 50%; /* Horizontal in der Mitte */
+    transform: translate(-50%, -50%);  /* Verschiebt den Container exakt in die Mitte */
+    z-index: 10;  /* Über andere Inhalte stellen */
+    text-align: center;  /* Text zentrieren */
+    width: 100%;  /* Breite auf 100% setzen, damit der Container die volle Bildschirmbreite einnimmt */
+    max-width: 1200px; /* Max. Breite des Containers begrenzen */
+    overflow: hidden;  /* Verhindert, dass der Inhalt des Containers aus dem Rahmen tritt */
+}
+
+/* Mobile Anpassungen */
+@media screen and (max-width: 768px) {
+    /* Schriftgröße des Typewriters für mobile Geräte */
+    #text-container {
+        font-size: 40px;
+    }
+
+    .typewriter-container {
+        position: relative;
+        top: 40%;  /* Unter der Navigation positioniert */
+        left: 50%;
+        transform: translateX(-50%); /* Horizontale Zentrierung */
+        z-index: 10;  /* Über das Video legen */
+        max-width: 90%; /* Container schmaler auf mobilen Geräten */
+    }
+}
