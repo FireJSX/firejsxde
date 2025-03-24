@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../assets/css/textcontainer.css';  // Wenn du CSS separat auslagerst
 
 const TextContainer = () => {
     const [text, setText] = useState('');  // Zustand für den aktuellen Text
@@ -46,8 +45,10 @@ const TextContainer = () => {
     }, [counter]);  // Der Effekt wird erneut ausgeführt, wenn der Counter sich ändert
 
     return (
-        <div id="text-container">
-            <span>{text}<span className="cursor">|</span></span>  {/* Der getippte Text mit Cursor (Unterstrich) */}
+        <div className="typewriter-container">  {/* Wrapper für zentrierte Anzeige */}
+            <div id="text-container">
+                <span>{text}</span><span className="cursor">|</span>  {/* Der getippte Text mit Cursor (Unterstrich) */}
+            </div>
         </div>
     );
 };
