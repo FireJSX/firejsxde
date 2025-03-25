@@ -1,12 +1,12 @@
 // main.scss
-@import 'variables';    // Falls du Variablen wie Farben oder Fonts hast
-@import 'mixins';       // Falls du Mixins hast
-@import 'navbar';       // Styles für Navbar
-@import 'textcontainer'; // Styles für TextContainer
-@import 'footer';       // Styles für Footer
-@import 'newsfeed';     // Styles für Newsfeed
-@import 'videobackground'; // Styles für Video Background
-@import 'design';
+@use 'variables';    // Falls du Variablen wie Farben oder Fonts hast
+@use 'mixins';       // Falls du Mixins hast
+@use 'navbar';       // Styles für Navbar
+@use 'textcontainer'; // Styles für TextContainer
+@use 'footer';       // Styles für Footer
+@use 'newsfeed';     // Styles für Newsfeed
+@use 'videobackground'; // Styles für Video Background
+@use 'design';
 
 body{
   font-family: 'Wire One', sans-serif;
