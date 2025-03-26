@@ -1,29 +1,27 @@
 /* _textcontainer.scss */
 
-/* Container für den Typing-Effekt */
+
 .typewriter-container {
-  position: fixed; /* Fixiere den Text auf dem Bildschirm */
-  top: 50%; /* Positioniere den Container vertikal in der Mitte */
-  left: 50%; /* Positioniere den Container horizontal in der Mitte */
-  transform: translate(-50%, -50%); /* Korrigiere die Position, damit der Text wirklich mittig ist */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 1200px;
   text-align: center;
   z-index: 10;
 }
 
-/* Text Container */
 #text-container {
   font-family: 'Wire One', sans-serif;
   font-size: 80px;
   color: white;
   text-align: center;
   line-height: 1.5;
-  white-space: nowrap; /* Verhindert Zeilenumbrüche */
-  display: inline-block; /* Damit der Text und der Cursor nebeneinander bleiben */
+  white-space: nowrap;
+  display: inline-block;
 }
 
-/* Cursor Animation für den Typing-Effekt */
 .cursor {
   display: inline-block;
   animation: blink 0.8s step-end infinite;

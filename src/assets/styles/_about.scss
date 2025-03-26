@@ -1,0 +1,43 @@
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: ghostwhite;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .fun-fact {
+    font-weight: bold;
+    color: #ff5733;
+  }
+
+  .plot-twist {
+    font-weight: bold;
+    font-style: italic;
+    color: #0077cc;
+  }
+
+  .highlight {
+    font-weight: bold;
+    border-left: 4px solid #0077cc;
+    padding-left: 10px;
+  }
+
+  .cta {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #28a745;
+    text-align: center;
+  }
+}

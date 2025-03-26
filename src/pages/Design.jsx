@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';  // Deine Navbar-Komponente
-import Footer from '../components/Footer';  // Deine Footer-Komponente
-import '../assets/styles/main.scss';  // Importiere das Hauptstylesheet (welches _design.scss enthält)
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../assets/styles/main.scss';
 
 const Design = () => {
     const [slideIndexBanner, setSlideIndexBanner] = useState(1);
     const [slideIndexThumbnail, setSlideIndexThumbnail] = useState(1);
     const [slideIndexSkinrender, setSlideIndexSkinrender] = useState(1);
 
-    // Array mit den Dateinamen für jedes Set von Bildern
     const bannerImages = [
         'banner1.jpg', 'banner2.png', 'banner3.jpg', 'banner4.png', 'banner5.jpg'
     ];
@@ -25,7 +24,6 @@ const Design = () => {
         'skinrender31.png', 'skinrender32.png', 'skinrender33.png'
     ];
 
-    // Slide navigieren
     const plusSlides = (n, type) => {
         if (type === "banner") setSlideIndexBanner(prevIndex => prevIndex + n);
         if (type === "thumbnail") setSlideIndexThumbnail(prevIndex => prevIndex + n);
@@ -38,7 +36,6 @@ const Design = () => {
         if (type === "skinrender") setSlideIndexSkinrender(n);
     };
 
-    // Slideshow anzeigen
     const showSlides = (index, type) => {
         let slides;
         let dots;
@@ -73,7 +70,6 @@ const Design = () => {
         showSlides(slideIndexSkinrender, "skinrender");
     }, [slideIndexBanner, slideIndexThumbnail, slideIndexSkinrender]);
 
-    // Download-Logik für Bilder
     const downloadImage = (index, type) => {
         let img;
         if (type === "banner") {
@@ -92,13 +88,11 @@ const Design = () => {
         a.remove();
     };
 
-    // Funktion zum Laden von Bildern mit dynamischen Dateiendungen (.jpg und .png)
     const loadImage = (index, type) => {
         let img;
         const imageSet = type === "banner" ? bannerImages : type === "thumbnail" ? thumbnailImages : skinrenderImages;
         const imgName = imageSet[index - 1];
 
-        // Erstelle den Pfad basierend auf dem Type (Banner, Thumbnail, Skinrender)
         img = `/images/gallery/${type}/${imgName}`;
 
         return img;

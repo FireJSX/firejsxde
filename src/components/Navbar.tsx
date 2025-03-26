@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importiere den Link von react-router-dom
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
         <div className="nav-container">
             {/* Linke Navigation für das Home-Icon */}
             <div className="navitems-left">
-                <Link to="/"><i className="fas fa-home"></i></Link> {/* Nutze Link von react-router-dom */}
+                <Link to="/"><i className="fas fa-home"></i></Link>
             </div>
 
             {/* Desktop Navigation (rechts oben) */}

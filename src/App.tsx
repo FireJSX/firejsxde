@@ -1,12 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar'; // Die Navigation
-import VideoBackground from './components/VideoBackground'; // Video Hintergrund
-import NewsFeed from './components/NewsFeed'; // News Feed
-import Footer from './components/Footer'; // Footer
-import Design from './pages/Design'; // Die Design-Seite
-import TextContainer from './components/TextContainer'; // Text Container
+import Navbar from './components/Navbar';
+import VideoBackground from './components/VideoBackground';
+import NewsFeed from './components/NewsFeed';
+import Footer from './components/Footer';
+import TextContainer from './components/TextContainer';
+import About from './pages/About';
+import Design from './pages/Design';
+import Photography from "./pages/Photography";
+import LegalNotice from "./pages/LegalNotice";
+import Development from "./pages/Development";
 
 import './assets/styles/main.scss';
 
@@ -14,31 +18,24 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Navbar /> {/* Navbar wird auf allen Seiten angezeigt */}
-
-                {/* Routen definieren */}
+                <Navbar />
                 <Routes>
-                    {/* Startseite (wird beim Öffnen der App angezeigt) */}
                     <Route
                         path="/"
                         element={(
                             <>
-                                <VideoBackground /> {/* VideoBackground nur auf der Startseite */}
-                                <TextContainer /> {/* TextContainer nur auf der Startseite */}
-                                <NewsFeed /> {/* NewsFeed nur auf der Startseite */}
+                                <VideoBackground />
+                                <TextContainer />
+                                <NewsFeed />
                             </>
                         )}
                     />
-
-                    {/* Weitere Seiten ohne NewsFeed und TextContainer */}
                     <Route path="/design" element={<Design />} />
-                    <Route path="/about" element={<Footer />} />
-                    <Route path="/photography" element={<Footer />} />
-                    <Route path="/development" element={<Footer />} />
-                    <Route path="/legalnotice" element={<Footer />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/photography" element={<Photography />} />
+                    <Route path="/development" element={<Development />} />
+                    <Route path="/legalnotice" element={<LegalNotice />} />
                 </Routes>
-
-                {/* Footer wird immer angezeigt */}
                 <Footer />
             </div>
         </Router>

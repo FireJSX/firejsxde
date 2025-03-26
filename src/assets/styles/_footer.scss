@@ -1,13 +1,11 @@
 // _footer.scss
 
-// Globale Variablen (optional, falls du Farben oder andere Werte wiederverwenden möchtest)
 $footer-bg-color: black;
 $footer-text-color: white;
 $footer-social-hover-color: white;
 $footer-icon-size: 40px;
 $footer-social-gap: 20px;
 
-// Footer Container
 .footer {
   background-color: $footer-bg-color;
   display: flex;
@@ -21,7 +19,6 @@ $footer-social-gap: 20px;
   align-items: center;
   position: fixed;
 
-  // Soziale Icons Container
   .socials {
     display: flex;
     justify-content: center;
@@ -44,7 +41,6 @@ $footer-social-gap: 20px;
     }
   }
 
-  // Copyright Text
   #copyright {
     padding: 5px;
     margin-bottom: 10px;

@@ -27,12 +27,12 @@ h2 {
   font-size: 50px;
   margin-top: 20px;
   text-align: left;
-  padding-left: 10%;  /* Padding für den inneren Abstand */
+  padding-left: 10%;
   font-weight: normal;
   background: rgba(0, 0, 0, 0.50);
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  display: inline-block;  /* Stellt sicher, dass die Border sich um den Text+Padding legt */
+  display: inline-block;
 }
 
 .mySlides {
@@ -55,7 +55,6 @@ h2 {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* Hover-Buttons */
 .hover-buttons {
   position: absolute;
   top: 50%;
@@ -81,7 +80,6 @@ h2 {
   background-color: ghostwhite;
 }
 
-/* Dot Navigation */
 .dot {
   height: 15px;
   width: 15px;

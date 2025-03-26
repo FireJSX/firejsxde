@@ -1,6 +1,5 @@
 /* _videobackground.scss */
 
-/* Video-Hintergrund */
 .video-background {
   position: fixed;
   top: 0;
@@ -8,7 +7,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  overflow: hidden; /* Verhindert, dass das Video aus dem Sichtbereich ragt */
+  overflow: hidden;
 }
 
 iframe {
@@ -19,14 +18,13 @@ iframe {
   height: 100%;
 }
 
-/* Mobile Anpassungen für Video */
 @media screen and (max-width: 768px) {
   .video-background {
     position: absolute;
-    top: -100px; /* Verschiebt das Video unter die Navigation */
+    top: -100px;
     left: 0;
     width: 100%;
-    height: calc(100% - 60px); /* Der restliche Bereich nach der Navigation wird für das Video genutzt */
+    height: calc(100% - 60px);
     z-index: -1;
   }
 

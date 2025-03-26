@@ -1,16 +1,14 @@
 /* _navbar.scss */
 
-/* Container für die Navigation */
 .nav-container {
   position: relative;
   width: 100%;
 }
 
-/* Rechte Navigation (Menü) */
 .navitems {
   position: fixed;
   top: 5%;
-  right: 5%; /* Standard bleibt rechts */
+  right: 5%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -38,7 +36,6 @@
   text-decoration-color: white;
 }
 
-/* Linke Navigation (Home-Icon) */
 .navitems-left {
   position: fixed;
   top: 5%;
@@ -53,7 +50,6 @@
   text-decoration: none;
 }
 
-/* Mobile-Menü */
 #mobile-menu {
   display: none;
   flex-direction: column;
@@ -85,24 +81,20 @@
   display: none;
 }
 
-/* Desktop: Mobile-Menü verstecken */
 @media screen and (min-width: 769px) {
   #mobile-menu {
     display: none !important;
   }
   .hamburger-menu {
-    display: none; /* Hamburger Menü auf größeren Bildschirmen ausblenden */
+    display: none;
   }
 }
 
-/* Mobile Design Anpassungen */
 @media screen and (max-width: 768px) {
-  /* Navigation mittig setzen NUR in der mobilen Ansicht */
   .navitems {
     text-align: center;
   }
 
-  /* Hamburger Icon sichtbar machen */
   .hamburger-menu {
     display: block;
     position: fixed;
@@ -114,12 +106,10 @@
     z-index: 1001;
   }
 
-  /* Standard Navigation ausblenden */
   .navitems {
     display: none;
   }
 
-  /* Menü wird angezeigt, wenn es geöffnet ist */
   #mobile-menu.open {
     display: flex;
   }
