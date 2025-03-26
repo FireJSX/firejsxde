@@ -108,10 +108,10 @@ const Design = () => {
         <div>
             <Navbar />
             <div className="design-container">
-                <h1>Design Bereich</h1>
+                <h1>Old Designs for YouTube</h1>
 
                 {/* Banner Slideshow */}
-                <h2>Banner</h2>
+                <h2>/Banner/</h2>
                 <div className="slideshow-container">
                     {bannerImages.map((img, index) => (
                         <div key={index} className="bannerSlides fade">
@@ -120,9 +120,6 @@ const Design = () => {
                             <div className="hover-buttons">
                                 <button className="btn" onClick={() => downloadImage(index + 1, "banner")}>
                                     <i className="fa fa-download"></i> Bild herunterladen
-                                </button>
-                                <button className="btn" onClick={() => downloadImage(index + 1, "banner")}>
-                                    <i className="fa fa-download"></i> Photoshop-Datei herunterladen
                                 </button>
                             </div>
                         </div>
@@ -138,7 +135,7 @@ const Design = () => {
                 </div>
 
                 {/* Thumbnails Slideshow */}
-                <h2>Thumbnails</h2>
+                <h2>/Thumbnails/</h2>
                 <div className="slideshow-container">
                     {thumbnailImages.map((img, index) => (
                         <div key={index} className="thumbnailSlides fade">
@@ -146,10 +143,7 @@ const Design = () => {
                             <div className="text">Thumbnail {index + 1}</div>
                             <div className="hover-buttons">
                                 <button className="btn" onClick={() => downloadImage(index + 1, "thumbnail")}>
-                                    <i className="fa fa-download"></i> Bild herunterladen
-                                </button>
-                                <button className="btn" onClick={() => downloadImage(index + 1, "thumbnail")}>
-                                    <i className="fa fa-download"></i> Photoshop-Datei herunterladen
+                                    <i className="fa fa-download"></i> Save Image
                                 </button>
                             </div>
                         </div>
@@ -165,7 +159,7 @@ const Design = () => {
                 </div>
 
                 {/* Skinrender Slideshow */}
-                <h2>Skinrender</h2>
+                <h2>/Skinrender/</h2>
                 <div className="slideshow-container">
                     {skinrenderImages.map((img, index) => (
                         <div key={index} className="skinrenderSlides fade">
@@ -188,7 +182,14 @@ const Design = () => {
                     ))}
                 </div>
             </div>
-
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Footer />
         </div>
     );

@@ -1,7 +1,6 @@
 // src/assets/styles/_design.scss
 
 .design-container {
-  text-align: center;
   margin-top: 50px;
 }
 
@@ -10,6 +9,30 @@
   width: 100%;
   max-width: 1000px;
   margin: auto;
+}
+
+h1{
+  color: white;
+  font-size: 90px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 100px;
+  padding-left: 5%;
+}
+
+h2 {
+  color: white;
+  font-size: 50px;
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 10%;  /* Padding für den inneren Abstand */
+  font-weight: normal;
+  background: rgba(0, 0, 0, 0.50);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  display: inline-block;  /* Stellt sicher, dass die Border sich um den Text+Padding legt */
 }
 
 .mySlides {
@@ -46,7 +69,7 @@
 }
 
 .hover-buttons .btn {
-  background-color: #4CAF50;
+  background-color: grey;
   color: white;
   padding: 10px;
   border: none;
@@ -55,7 +78,7 @@
 }
 
 .hover-buttons .btn:hover {
-  background-color: #45a049;
+  background-color: ghostwhite;
 }
 
 /* Dot Navigation */
@@ -72,4 +95,39 @@
 
 .dot:hover, .dot.active {
   background-color: #717171;
+}
+
+.next, .prev{
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+  font-size: 30px;
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.prev{
+  left: -5%;
+}
+.next{
+  right: -9.5%;
+}
+
+.prev:hover, .next:hover{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .prev {
+    left: 19px;
+  }
+
+  .next {
+    right: -19px;
+  }
 }
