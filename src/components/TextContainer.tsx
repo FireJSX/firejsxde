@@ -31,7 +31,7 @@ const TextContainer = () => {
 
                 currentLetterIndex.current = 0;
                 setText('');
-            }, 1000);
+            }, 800);
         }
     };
 

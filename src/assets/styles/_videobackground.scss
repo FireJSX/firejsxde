@@ -1,5 +1,3 @@
-/* _videobackground.scss */
-
 .video-background {
   position: fixed;
   top: 0;
@@ -10,29 +8,24 @@
   overflow: hidden;
 }
 
-iframe {
+.video-background video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {
   .video-background {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 60px);
-    z-index: -1;
-  }
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
