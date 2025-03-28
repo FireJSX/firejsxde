@@ -1,6 +1,5 @@
 /* _textcontainer.scss */
 
-
 .typewriter-container {
   position: fixed;
   top: 50%;
@@ -33,12 +32,23 @@
     opacity: 0;
   }
 }
+
 @media screen and (max-width: 768px) {
   .typewriter-container {
-    top: 35%;
+    top: 40%;
   }
+
   #text-container {
     font-size: 40px;
   }
+}
 
+@media screen and (max-width: 480px) {
+  .typewriter-container {
+    top: 30%;
+  }
+
+  #text-container {
+    font-size: 30px; /* Noch kleinerer Text */
+  }
 }
