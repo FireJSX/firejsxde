@@ -10,46 +10,67 @@ $footer-social-gap: 20px;
   background-color: $footer-bg-color;
   display: flex;
   width: 100%;
-  bottom: 0;
-  left: 0;
   padding: 0;
   margin: 0;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  position: fixed;
+  position: fixed; /* Fixiert den Footer am unteren Rand */
+  bottom: 0;
+  left: 0;
   z-index: 20;
+}
 
-  .socials {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: $footer-social-gap;
-    padding: 10px 0;
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $footer-social-gap;
+  padding: 10px 0;
 
-    a {
-      color: rgba(255, 255, 255, 0.3);
-      font-size: $footer-icon-size;
-      transition: color 0.3s ease, transform 0.2s ease;
+  a {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: $footer-icon-size;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    gap: 15px;
+
+    &:hover {
+      color: $footer-social-hover-color;
+      transform: scale(1.1);
       text-decoration: none;
-      gap: 15px;
-
-      &:hover {
-        color: $footer-social-hover-color;
-        transform: scale(1.1);
-        text-decoration: none;
-      }
     }
+  }
+}
+
+#copyright {
+  padding: 5px;
+  margin-bottom: 10px;
+  align-content: center;
+  color: $footer-text-color;
+  text-align: center;
+  font-family: 'Wire One', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  /* Bei mobilen Geräten bleibt der Footer fixiert, aber mit kleinerem Abstand */
+  .footer {
+    position: fixed; /* Fixiert den Footer */
+    bottom: 0; /* Footer bleibt unten */
+    width: 100%;
+    margin-top: 0;
+    left: 0; /* Verhindert eine Verschiebung nach rechts oder links */
   }
 
   #copyright {
-    padding: 5px;
-    margin-bottom: 10px;
-    align-content: center;
-    color: $footer-text-color;
-    text-align: center;
-    font-family: 'Wire One', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px; /* Kleinere Schriftgröße für mobile Geräte */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 14px;
   }
 }
