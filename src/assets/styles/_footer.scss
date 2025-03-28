@@ -18,6 +18,7 @@ $footer-social-gap: 20px;
   justify-content: flex-end;
   align-items: center;
   position: fixed;
+  z-index: 20;
 
   .socials {
     display: flex;
