@@ -1,8 +1,34 @@
+.about-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.about-container {
+  display: flex;
+  height: 100%;
+}
+
+.about-image {
+  width: 35vw;
+  height: 100vh;
+  background: url('public/images/about/me.jpg') top center/cover no-repeat;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.about-content {
+  width: 65vw;
+  margin-left: 35vw;
+  padding: 50px;
+  overflow-y: auto;
+  color: white;
+}
+
 .about {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: ghostwhite;
+  font-family: 'Teko', sans-serif;
 
   h1 {
     font-size: 2.5rem;
@@ -39,5 +65,26 @@
     font-size: 1.2rem;
     color: #28a745;
     text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-image {
+    width: 100vw;
+    min-height: 40vh;
+    position: relative;
+  }
+
+  .about-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+    padding-top: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
