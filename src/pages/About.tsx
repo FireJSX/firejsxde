@@ -67,6 +67,14 @@ const About: React.FC = () => {
                 </main>
             </div>
             </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Footer />
         </div>
     );
