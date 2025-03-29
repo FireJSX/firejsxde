@@ -71,20 +71,31 @@
 @media (max-width: 900px) {
   .about-container {
     flex-direction: column;
+    box-sizing: border-box;
   }
 
   .about-image {
     width: 100vw;
     min-height: 40vh;
     position: relative;
+    box-sizing: border-box;
   }
 
+  .about-page {
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+
   .about-content {
+    box-sizing: border-box;
     width: 100%;
     margin-left: 0;
     padding: 20px;
     padding-top: 30px;
     padding-right: 15px;
     padding-left: 15px;
+    word-wrap: break-word;
+    overflow-x: hidden;
   }
 }
