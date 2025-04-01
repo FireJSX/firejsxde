@@ -121,24 +121,28 @@
   .hero-text {
     font-size: 3rem;
     padding: 10px 20px;
-    top: 70%;
-    transform: translateY(-70%);
+    bottom: 10%;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
-@media (max-width: 600px) {
-  .photo-column {
-    width: 100%;
-  }
+  @media (max-width: 600px) {
+    .photo-column {
+      width: 100%;
+    }
 
-  .hero {
-    height: 40vh;
-  }
+    .hero {
+      height: 40vh;
+    }
 
-  .hero-text {
-    font-size: 2.5rem;
-    padding: 10px 20px;
-    top: 80%;
-    transform: translateY(-80%);
+    .hero-text {
+      font-size: 2.5rem;
+      padding: 10px 20px;
+      bottom: 5%;
+      top: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
-}
