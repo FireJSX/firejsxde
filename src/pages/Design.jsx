@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../assets/styles/main.scss';
+import HeroBanner from "../components/HeroBanner";
 
 const Design = () => {
     const [slideIndexBanner, setSlideIndexBanner] = useState(1);
@@ -101,6 +102,10 @@ const Design = () => {
     return (
         <div>
             <Navbar />
+            <HeroBanner
+                title="Design"
+                imageUrl="/images/design/banner1.jpg"
+            />
             <div className="design-container">
                 <h1>Old Designs for YouTube</h1>
 

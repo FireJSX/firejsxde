@@ -83,49 +83,11 @@
   margin-top: 10px;
 }
 
-.hero {
-  position: relative;
-  height: 60vh;
-  background: url('/images/photography/hero.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 5vw;
-}
-
-.hero-text {
-  font-family: 'Teko', sans-serif;
-  font-size: 5rem;
-  font-weight: 700;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px 40px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 @media (max-width: 1000px) {
   .photo-column {
     width: 48%;
   }
 
-  .hero {
-    height: 50vh;
-  }
-
-  .hero-text {
-    font-size: 3rem;
-    padding: 10px 20px;
-    bottom: 10%;
-    top: auto;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 }
 
   @media (max-width: 600px) {
@@ -133,16 +95,4 @@
       width: 100%;
     }
 
-    .hero {
-      height: 40vh;
-    }
-
-    .hero-text {
-      font-size: 2.5rem;
-      padding: 10px 20px;
-      bottom: 5%;
-      top: auto;
-      left: 50%;
-      transform: translateX(-50%);
-    }
   }

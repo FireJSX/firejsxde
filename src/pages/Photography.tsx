@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import HeroBanner from '../components/HeroBanner';
 import '../assets/styles/main.scss';
 
 interface Photo {
@@ -64,21 +65,19 @@ const photos: Photo[] = [
 ];
 
 const Photography: React.FC = () => {
-    const columnCount = 3; // Anzahl der Spalten, die wir haben wollen
-    const columns: Photo[][] = Array.from({ length: columnCount }, () => []); // Spaltenarray für die Bilder
-
-    // Bilder gleichmäßig den 3 Spalten zuweisen
+    const columnCount = 3;
+    const columns: Photo[][] = Array.from({ length: columnCount }, () => []);
     photos.forEach((photo, index) => {
         columns[index % columnCount].push(photo);
     });
 
-    // @ts-ignore
     return (
         <div>
             <Navbar />
-            <header className="hero">
-                    <h1 className="hero-text">Photography</h1>
-            </header>
+            <HeroBanner
+                title="Photography"
+                imageUrl="/images/photography/hero.jpg"
+            />
             <main className="photography">
                 <div className="photo-gallery">
                     {columns.map((column, colIndex) => (
@@ -97,13 +96,6 @@ const Photography: React.FC = () => {
                     ))}
                 </div>
             </main>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             <Footer />
         </div>
     );
