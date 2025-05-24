@@ -11,6 +11,7 @@ const Development: React.FC = () => {
             <HeroBanner
                 title="Development"
                 imageUrl="/images/development/background.png"
+                className="development-hero"
             />
             <main className="Development">
                 <section className="project-section">

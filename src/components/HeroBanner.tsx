@@ -4,6 +4,7 @@ import '../assets/styles/main.scss';
 interface HeroBannerProps {
     title: string;
     imageUrl: string;
+    className: string;
 }
 
 const HeroBanner: React.FC<HeroBannerProps> = ({ title, imageUrl }) => {
