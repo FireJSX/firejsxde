@@ -1,12 +1,4 @@
 // main.scss
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  src: url("/fonts/fa-solid-900.woff2") format("woff2"),
-  url("/fonts/fa-solid-900.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-}
-
 @use 'variables';
 @use 'mixins';
 @use 'navbar';
@@ -20,6 +12,14 @@
 @use 'legalnotice';
 @use 'photography';
 @use 'herobanner';
+
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  src: url("/fonts/fa-solid-900.woff2") format("woff2"),
+  url("/fonts/fa-solid-900.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
 
 body{
   font-family: 'Wire One', sans-serif;

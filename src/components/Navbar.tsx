@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
         <div className="nav-container">
             {/* Linke Navigation für das Home-Icon */}
             <div className="navitems-left">
-                <Link to="/"><i className="fas fa-home"></i></Link>
+                <Link to="/"><i className="fa-solid fa-home"></i></Link>
             </div>
 
             {/* Desktop Navigation (rechts oben) */}
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
                 onClick={toggleMenu}
                 aria-label="Toggle navigation"
             >
-                <i className="fas fa-bars"></i> {/* Hier ein beliebiges Hamburger-Symbol */}
+                <i className="fa-solid fa-bars"></i> {/* Hier ein beliebiges Hamburger-Symbol */}
             </div>
 
             {/* Mobile Menü, das angezeigt wird, wenn isOpen true ist */}
