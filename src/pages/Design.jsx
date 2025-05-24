@@ -105,6 +105,7 @@ const Design = () => {
             <HeroBanner
                 title="Design"
                 imageUrl="/images/design/banner1.jpg"
+                className="hero"
             />
             <div className="design-container">
                 <h1>Old Designs for YouTube</h1>

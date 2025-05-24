@@ -62,6 +62,13 @@ const photos: Photo[] = [
         description: "Action on the Theaterplatz.",
         blurColor: "rgba(200, 200, 200, 0.1)",
     },
+    {
+        src: "/images/photography/photo-8.jpg",
+        date: "23 May 2025",
+        location: "Deggendorf, Germany",
+        description: "Aftershow-Party at the Deggendorf Institute of Technology.",
+        blurColor: "rgba(0, 0, 200, 0.1)",
+    },
 ];
 
 const Photography: React.FC = () => {
@@ -77,6 +84,7 @@ const Photography: React.FC = () => {
             <HeroBanner
                 title="Photography"
                 imageUrl="/images/photography/hero.jpg"
+                className="hero"
             />
             <main className="photography">
                 <div className="photo-gallery">
