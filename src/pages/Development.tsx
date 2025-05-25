@@ -15,35 +15,6 @@ const Development: React.FC = () => {
             />
             <main className="Development">
                 <section className="project-section">
-                    <h1 className="project-title">DinoRunner</h1>
-
-                    <p className="project-description">
-                        Dino Runner is a 2D endless runner game built with Pygame. The player controls a character that must avoid obstacles and achieve the highest score possible.
-                    </p>
-
-                    <div className="project-columns">
-                        <div className="left-column with-background">
-                            <h2 className="subheading">How to Play</h2>
-                            <ul className="how-to-play-list">
-                                <li><strong>Start the Game:</strong> Press SPACE to begin.</li>
-                                <li><strong>Jump:</strong> Press SPACE to jump over obstacles.</li>
-                                <li><strong>Pause:</strong> Press ESC to open the pause menu.</li>
-                                <li><strong>Quit:</strong> Press F12 or close the window.</li>
-                            </ul>
-                        </div>
-
-                        <div className="right-column">
-                            <img
-                                src="/images/development/dino-icon.png"
-                                alt="DinoRunner Icon"
-                                className="project-icon"
-                            />
-                            <button className="hero-style-button">Download</button>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="project-section">
                     <h1 className="project-title">ConnectApp</h1>
 
                     <p className="project-description">
@@ -75,6 +46,35 @@ const Development: React.FC = () => {
                             >
                                 Download
                             </a>
+                        </div>
+                    </div>
+                </section>
+                <section className="project-section">
+                    <h1 className="project-title">DinoRunner</h1>
+
+                    <p className="project-description">
+                        Dino Runner is a 2D endless runner game built with Pygame. The player controls a character that must avoid obstacles and achieve the highest score possible.
+                    </p>
+
+                    <div className="project-columns">
+                        <div className="left-column with-background">
+                            <h2 className="subheading">How to Play</h2>
+                            <ul className="how-to-play-list">
+                                <li><strong>Start the Game:</strong> Press SPACE to begin.</li>
+                                <li><strong>Jump:</strong> Press SPACE to jump over obstacles.</li>
+                                <li><strong>Move:</strong> Press A/D to move your dino.</li>
+                                <li><strong>Pause:</strong> Press ESC to open the pause menu.</li>
+                                <li><strong>Quit:</strong> Press F12 or close the window.</li>
+                            </ul>
+                        </div>
+
+                        <div className="right-column">
+                            <img
+                                src="/images/development/dino-icon.png"
+                                alt="DinoRunner Icon"
+                                className="project-icon"
+                            />
+                            <button className="hero-style-button">coming soon</button>
                         </div>
                     </div>
                 </section>
