@@ -74,7 +74,12 @@ const Development: React.FC = () => {
                                 alt="DinoRunner Icon"
                                 className="project-icon"
                             />
-                            <button className="hero-style-button">coming soon</button>
+                            <a className="hero-style-button"
+                               href="/downloads/dinorunner.exe"
+                               download
+                            >
+                                Download
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -82,7 +87,7 @@ const Development: React.FC = () => {
             <br/>
             <br/>
             <br/>
-            <Footer />
+            <Footer/>
         </div>
     );
 };
