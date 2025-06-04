@@ -4,6 +4,28 @@ import Footer from '../components/Footer';
 import '../assets/styles/main.scss';
 import HeroBanner from "../components/HeroBanner";
 
+const handleDinoDownload = () => {
+    const baseName = 'dinorunner';
+    const partCount = 3; // z01, z02, zip
+
+    const downloadFile = (fileName: string) => {
+        const link = document.createElement('a');
+        link.href = `/downloads/${fileName}`;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    for (let i = 1; i < partCount; i++) {
+        const part = `${baseName}.z${i.toString().padStart(2, '0')}`;
+        downloadFile(part);
+    }
+
+    downloadFile(`${baseName}.zip`);
+};
+
+
 const Development: React.FC = () => {
     return (
         <div>
@@ -74,12 +96,9 @@ const Development: React.FC = () => {
                                 alt="DinoRunner Icon"
                                 className="project-icon"
                             />
-                            <a className="hero-style-button"
-                               href="/downloads/dinorunner.exe"
-                               download
-                            >
+                            <button className="hero-style-button" onClick={() => handleDinoDownload()}>
                                 Download
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </section>
