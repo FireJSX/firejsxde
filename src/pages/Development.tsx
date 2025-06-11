@@ -87,6 +87,7 @@ const Development: React.FC = () => {
                                 <li><strong>Move:</strong> Press A/D to move your dino.</li>
                                 <li><strong>Pause:</strong> Press ESC to open the pause menu.</li>
                                 <li><strong>Quit:</strong> Press F12 or close the window.</li>
+                                <li><strong>Note: If you want to download the game you will get 2 split packages. You need both to extract the main .zip file!</li>
                             </ul>
                         </div>
 
