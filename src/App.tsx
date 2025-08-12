@@ -1,31 +1,35 @@
-// src/App.tsx
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AppRoutes from './AppRoutes';
+import UnsupportedBrowser from './components/UnsupportedBrowser';
 
 import './assets/styles/main.scss';
 
 function App() {
+    const [isInstagramBrowser, setIsInstagramBrowser] = useState(false);
+
     useEffect(() => {
-        const userAgent = navigator.userAgent || navigator.vendor;
-
-        const isInstagram = /Instagram/.test(userAgent);
-
-        if (isInstagram) {
-            window.location.href = window.location.href;
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('instagram')) {
+            setIsInstagramBrowser(true);
         }
     }, []);
 
     return (
         <Router>
             <div className="App">
-                <Navbar />
-                <AppRoutes />
-                <Footer />
+                {isInstagramBrowser ? (
+                    <UnsupportedBrowser />
+                ) : (
+                    <>
+                        <Navbar />
+                        <AppRoutes />
+                        <Footer />
+                    </>
+                )}
             </div>
         </Router>
     );
