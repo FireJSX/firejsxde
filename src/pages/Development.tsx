@@ -99,6 +99,7 @@ const Development: React.FC = () => {
                             <button className="hero-style-button" onClick={() => handleDinoDownload()}>
                                 Download
                             </button>
+                            <strong>Note: If you want to download the game you will get 2 split packages. You need both to extract the main .zip file! </strong>
                         </div>
                     </div>
                 </section>
