@@ -10,19 +10,19 @@ const Design = () => {
     const [slideIndexSkinrender, setSlideIndexSkinrender] = useState(1);
 
     const bannerImages = [
-        'banner1.jpg', 'banner2.png', 'banner3.jpg', 'banner4.png', 'banner5.jpg'
+        'banner1.webp', 'banner2.webp', 'banner3.webp', 'banner4.webp', 'banner5.webp', 'banner6.webp'
     ];
     const thumbnailImages = [
-        'thumbnail1.png', 'thumbnail2.jpg', 'thumbnail3.png', 'thumbnail4.png', 'thumbnail5.jpg'
+        'thumbnail1.webp', 'thumbnail2.webp', 'thumbnail3.webp', 'thumbnail4.webp', 'thumbnail5.webp'
     ];
     const skinrenderImages = [
-        'skinrender1.png', 'skinrender2.png', 'skinrender3.png', 'skinrender4.png', 'skinrender5.png',
-        'skinrender6.png', 'skinrender7.png', 'skinrender8.png', 'skinrender9.png', 'skinrender10.png',
-        'skinrender11.png', 'skinrender12.png', 'skinrender13.png', 'skinrender14.png', 'skinrender15.png',
-        'skinrender16.png', 'skinrender17.png', 'skinrender18.png', 'skinrender19.png', 'skinrender20.png',
-        'skinrender21.png', 'skinrender22.png', 'skinrender23.png', 'skinrender24.png', 'skinrender25.png',
-        'skinrender26.png', 'skinrender27.png', 'skinrender28.png', 'skinrender29.png', 'skinrender30.png',
-        'skinrender31.png', 'skinrender32.png', 'skinrender33.png'
+        'skinrender1.webp', 'skinrender2.webp', 'skinrender3.webp', 'skinrender4.webp', 'skinrender5.webp',
+        'skinrender6.webp', 'skinrender7.webp', 'skinrender8.webp', 'skinrender9.webp', 'skinrender10.webp',
+        'skinrender11.webp', 'skinrender12.webp', 'skinrender13.webp', 'skinrender14.webp', 'skinrender15.webp',
+        'skinrender16.webp', 'skinrender17.webp', 'skinrender18.webp', 'skinrender19.webp', 'skinrender20.webp',
+        'skinrender21.webp', 'skinrender22.webp', 'skinrender23.webp', 'skinrender24.webp', 'skinrender25.webp',
+        'skinrender26.webp', 'skinrender27.webp', 'skinrender28.webp', 'skinrender29.webp', 'skinrender30.webp',
+        'skinrender31.webp'
     ];
 
     const plusSlides = (n, type) => {
@@ -104,7 +104,7 @@ const Design = () => {
             <Navbar />
             <HeroBanner
                 title="Design"
-                imageUrl="/images/design/banner1.jpg"
+                imageUrl="/images/design/banner1.webp"
                 className="hero"
             />
             <div className="design-container">

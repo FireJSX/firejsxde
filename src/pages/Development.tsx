@@ -6,7 +6,7 @@ import HeroBanner from "../components/HeroBanner";
 
 const handleDinoDownload = () => {
     const baseName = 'dinorunner';
-    const partCount = 3; // z01, z02, zip
+    const partCount = 3;
 
     const downloadFile = (fileName: string) => {
         const link = document.createElement('a');
