@@ -14,56 +14,56 @@ interface Photo {
 
 const photos: Photo[] = [
     {
-        src: "/images/photography/photo-1.jpg",
+        src: "/images/photography/photo-1.webp",
         date: "01 Mar 2025",
         location: "Dresden, Germany",
         description: "A cloudy day next to the Theaterplatz.",
         blurColor: "rgba(255, 99, 71, 0.1)",
     },
     {
-        src: "/images/photography/photo-2.jpg",
+        src: "/images/photography/photo-2.webp",
         date: "03 Mar 2025",
         location: "Dresden, Germany",
         description: "Sunset over the Theaterplatz.",
         blurColor: "rgba(30, 144, 255, 0.1)",
     },
     {
-        src: "/images/photography/photo-3.jpg",
+        src: "/images/photography/photo-3.webp",
         date: "19 Jul 2024",
         location: "Friedrichshafen, Germany",
         description: "Sunny day at the Bodensee.",
         blurColor: "rgba(50, 205, 50, 0.1)",
     },
     {
-        src: "/images/photography/photo-4.jpg",
+        src: "/images/photography/photo-4.webp",
         date: "19 Jun 2024",
         location: "Deggendorf, Germany",
         description: "Sunset walk in Deggendorf.",
         blurColor: "rgba(250, 0, 250, 0.1)",
     },
     {
-        src: "/images/photography/photo-5.jpg",
+        src: "/images/photography/photo-5.webp",
         date: "19 Jun 2024",
         location: "Deggendorf, Germany",
         description: "Locks near the Donau in Deggendorf.",
         blurColor: "rgba(250, 255, 50, 0.1)",
     },
     {
-        src: "/images/photography/photo-6.jpg",
+        src: "/images/photography/photo-6.webp",
         date: "01 Mar 2025",
         location: "Dresden, Germany",
         description: "A cloudy day at the Zwinger in Dresden.",
         blurColor: "rgba(0, 205, 100, 0.1)",
     },
     {
-        src: "/images/photography/photo-7.jpg",
+        src: "/images/photography/photo-7.webp",
         date: "01 Mar 2025",
         location: "Dresden, Germany",
         description: "Action on the Theaterplatz.",
         blurColor: "rgba(200, 200, 200, 0.1)",
     },
     {
-        src: "/images/photography/photo-8.jpg",
+        src: "/images/photography/photo-8.webp",
         date: "23 May 2025",
         location: "Deggendorf, Germany",
         description: "Aftershow-Party at the Deggendorf Institute of Technology.",
@@ -83,7 +83,7 @@ const Photography: React.FC = () => {
             <Navbar />
             <HeroBanner
                 title="Photography"
-                imageUrl="/images/photography/hero.jpg"
+                imageUrl="/images/photography/hero.webp"
                 className="hero"
             />
             <main className="photography">

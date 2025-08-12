@@ -32,7 +32,7 @@ const Development: React.FC = () => {
             <Navbar />
             <HeroBanner
                 title="Development"
-                imageUrl="/images/development/background.png"
+                imageUrl="/images/development/background.webp"
                 className="development-hero"
             />
             <main className="Development">
@@ -58,7 +58,7 @@ const Development: React.FC = () => {
                         </div>
                         <div className="right-column">
                             <img
-                                src="/images/development/ConnectApp.png"
+                                src="/images/development/ConnectApp.webp"
                                 alt="ConnectApp Icon"
                                 className="project-icon"
                             />
@@ -92,7 +92,7 @@ const Development: React.FC = () => {
 
                         <div className="right-column">
                             <img
-                                src="/images/development/dino-icon.png"
+                                src="/images/development/dino-icon.webp"
                                 alt="DinoRunner Icon"
                                 className="project-icon"
                             />
