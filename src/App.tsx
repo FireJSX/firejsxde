@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -15,25 +13,8 @@ function App() {
 
     useEffect(() => {
         const ua = navigator.userAgent.toLowerCase();
-        const isInstagram = ua.includes('instagram');
-        setIsInstagramBrowser(isInstagram);
-
-        if (isInstagram) {
-            const url = window.location.href.replace(/^https?:\/\//, '');
-            const androidRedirect = `intent://${url}#Intent;scheme=https;package=com.android.chrome;end`;
-            const iosRedirect = `googlechrome://${url}`;
-
-            const isAndroid = ua.includes('android');
-            const isIOS = /iphone|ipad|ipod/.test(ua);
-
-            // Delay to ensure redirect doesn't interrupt state update
-            setTimeout(() => {
-                if (isAndroid) {
-                    window.location.href = androidRedirect;
-                } else if (isIOS) {
-                    window.location.href = iosRedirect;
-                }
-            }, 500);
+        if (ua.includes('instagram')) {
+            setIsInstagramBrowser(true);
         }
     }, []);
 
