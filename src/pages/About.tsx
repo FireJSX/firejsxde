@@ -47,9 +47,9 @@ const About: React.FC = () => {
                     <p className="highlight">Yep, I mentioned that in the meeting.</p>
                     <p>
                         And, well, you can guess what happened – I was rejected. No worries,
-                        though! Now, I’m spending a few months working in special-purpose
+                        though! I started spending a few months working in special-purpose
                         machine engineering to gain some work experience and, of course, save up
-                        a little cash. 💰
+                        a little cash.
                     </p>
                     <p>
                         But hey, my skills aren’t just about the academic side of things. Over
