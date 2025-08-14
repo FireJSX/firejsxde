@@ -2,13 +2,24 @@ import React from 'react';
 
 const UnsupportedBrowser = () => {
     return (
-        <div style={{ padding: '2rem', textAlign: 'center', color: 'white', backgroundColor: '#111', height: '100vh' }}>
-            <h1>⚠️ Nicht unterstützter Browser</h1>
-            <p>Diese Website funktioniert nicht im eingebetteten Instagram-Browser.</p>
-            <p>Bitte öffne sie in deinem Standardbrowser:</p>
-            <br />
-            <p>
-                <strong>Tippe oben rechts auf die drei Punkte &rarr; „Im Browser öffnen“</strong>
+        <div style={{
+            padding: '2rem',
+            textAlign: 'center',
+            fontFamily: 'Arial, sans-serif',
+            backgroundColor: '#f8f8f8',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+        }}>
+            <h2 style={{ fontSize: '1.8rem', color: '#d63031' }}>
+                Instagram-Browser wird nicht unterstützt
+            </h2>
+            <p style={{ marginTop: '1rem', fontSize: '1.1rem', color: '#333' }}>
+                Bitte öffne diese Seite in deinem Standardbrowser (z.&nbsp;B. Chrome oder Safari).
+            </p>
+            <p style={{ marginTop: '1rem', color: '#666' }}>
+                Klicke oben rechts auf die <strong>drei Punkte</strong> und wähle <em>„Im Browser öffnen“</em>.
             </p>
         </div>
     );
