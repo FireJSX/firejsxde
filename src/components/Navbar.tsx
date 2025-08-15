@@ -40,7 +40,9 @@ const Navbar: React.FC = () => {
                 <Link to="/about">About</Link>
                 <Link to="/design">Design</Link>
                 <Link to="/photography">Photography</Link>
+                <Link to="/videography">Videography</Link>
                 <Link to="/development">Development</Link>
+                <Link to="/onair">On Air</Link>
                 <Link to="/legalnotice">Legal Notice</Link>
             </div>
         </div>
