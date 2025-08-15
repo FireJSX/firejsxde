@@ -1,0 +1,111 @@
+.videography-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  .video-section {
+    margin-bottom: 80px;
+    text-align: center;
+
+    h2 {
+      font-size: 4.4rem;      // größer als vorher (2rem)
+      margin-bottom: 12px;
+    }
+
+    .video-description {
+      font-size: 2.3rem;      // größer als vorher (1.1rem)
+      margin-bottom: 12px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .video-details {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+      font-size: 2.15rem;     // größer als vorher (1rem)
+      color: #ccc;
+
+      li {
+        margin-bottom: 6px;
+      }
+    }
+
+    .video-wrapper {
+      width: 90%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  // Spezielles Layout für vertikale Videos (Hochkant)
+  .vertical-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+
+    .video-info {
+      flex: 1;
+      max-width: 480px;
+
+      h2 {
+        font-size: 4.4rem;    // größer als vorher (2rem)
+        margin-bottom: 10px;
+      }
+
+      .video-description {
+        font-size: 2.3rem;    // größer als vorher (1.1rem)
+        margin-bottom: 12px;
+      }
+
+      .video-details {
+        font-size: 2.15rem;   // größer als vorher (1rem)
+        color: #ccc;
+
+        li {
+          margin-bottom: 6px;
+        }
+      }
+    }
+
+    .video-wrapper {
+      width: 320px;
+      height: calc(320px * 3);
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .video-info {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .video-wrapper {
+        width: 90vw;
+        height: calc(90vw * 3);
+      }
+    }
+  }
+}

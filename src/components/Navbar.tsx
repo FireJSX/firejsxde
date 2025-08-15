@@ -20,6 +20,7 @@ const Navbar: React.FC = () => {
                 <Link to="/about">About</Link> {/* Link-Komponente für About */}
                 <Link to="/design">Design</Link> {/* Link-Komponente für Design */}
                 <Link to="/photography">Photography</Link> {/* Link-Komponente für Photography */}
+                <Link to="/videography">Videography</Link> {/* Link-Komponente für Videography */}
                 <Link to="/development">Development</Link> {/* Link-Komponente für Development */}
                 <Link to="/legalnotice">Legal Notice</Link> {/* Link-Komponente für Legal Notice */}
             </div>

@@ -9,7 +9,7 @@ const About: React.FC = () => {
             <Navbar />
             <div className="about">
             <div className="about-container">
-                <div className="about-image"></div> {/* Hintergrundbild */}
+                <div className="about-image"></div> {}
                 <main className="about-content">
                     <h1>Hey there! 👋</h1>
                     <p>
