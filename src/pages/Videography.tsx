@@ -6,24 +6,24 @@ import '../assets/styles/main.scss';
 
 const videos = [
     {
-        title: 'Semesterfilm – 1. Semester',
+        title: 'Semester Film – 1st Semester',
         description:
-            "'Slip Up' – ganz ohne Dialog – zeigt, wie stark visuelles Storytelling sein kann.",
+            "'Slip Up' – completely without dialogue – shows the power of visual storytelling.",
         details: [
-            'Aufgabe: Film ohne Sprache',
-            'Fokus: Emotionen, Mimik, Schnitt',
-            'Rolle: Drehbuch, Kamera, Licht, Schnitt',
+            'Task: Film without speech',
+            'Focus: Emotions, facial expressions, editing',
+            'Role: Screenplay, camera, lighting, editing',
         ],
         url: 'https://www.youtube.com/embed/cXw2elejLPc',
         vertical: false,
     },
     {
-        title: 'Ein Schuss Natur (Stop Motion)',
+        title: 'A Shot of Nature (Stop Motion)',
         description:
-            'Ein humorvoller Stop-Motion-Film rund um Kuchenwettkämpfe – unsere Interpretation von Olympia.',
+            'A humorous stop-motion film about cake competitions – our interpretation of the Olympics.',
         details: [
-            'Einzelbildanimation mit DSLR',
-            'Setbau & Requisiten selbst gemacht',
+            'Frame-by-frame animation with DSLR',
+            'Self-made set design & props',
             'Adobe After Effects & Audition',
         ],
         url: 'https://www.youtube.com/embed/_AslhtH-BpA',
@@ -31,16 +31,16 @@ const videos = [
     },
     {
         title: 'City Dragon (Unreal Engine)',
-        description: 'Meine erste selbst umgesetzte Animation in Unreal Engine.',
-        details: ['Unreal Sequencer', 'Hochkant gerendert (9:16)', 'Einführung in VFX & Animation'],
+        description: 'My first self-made animation in Unreal Engine.',
+        details: ['Unreal Sequencer', 'Vertical format (9:16)', 'Introduction to VFX & animation'],
         url: 'https://www.youtube.com/embed/vFsmsbbMJKE',
         vertical: true,
     },
     {
-        title: '3D-Modellierung: Subaru 360',
+        title: '3D Modeling: Subaru 360',
         description:
-            'Ein realistisches 3D-Modell des Subaru 360 aus dem Jahr 1958 – inkl. Kamerafahrt.',
-        details: ['Modellierung in 3DS Max', 'Animation & Kamerafahrt'],
+            'A realistic 3D model of the 1958 Subaru 360 – including camera animation.',
+        details: ['Modeling in 3DS Max', 'Animation & camera movement'],
         url: 'https://www.youtube.com/embed/JiVVNME7nx4',
         vertical: false,
     },
