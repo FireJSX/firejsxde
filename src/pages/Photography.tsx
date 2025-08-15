@@ -69,6 +69,13 @@ const photos: Photo[] = [
         description: "Aftershow-Party at the Deggendorf Institute of Technology.",
         blurColor: "rgba(0, 0, 200, 0.1)",
     },
+    {
+        src: "/images/photography/photo-9.webp",
+        date: "09 Aug 2025",
+        location: "Most, Czech Republic",
+        description: "FSCzech Formula Student Event.",
+        blurColor: "rgba(0, 0, 200, 0.1)",
+    },
 ];
 
 const Photography: React.FC = () => {
