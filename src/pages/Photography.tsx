@@ -76,6 +76,20 @@ const photos: Photo[] = [
         description: "FSCzech Formula Student Event.",
         blurColor: "rgba(0, 0, 200, 0.1)",
     },
+    {
+        src: "/images/photography/photo-10.webp",
+        date: "07 Aug 2025",
+        location: "Most, Czech Republic",
+        description: "Golden Hour - FSCzech Formula Student Event.",
+        blurColor: "rgba(200, 200, 20, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-9.webp",
+        date: "13 Jun 2025",
+        location: "Deggendorf, Germany",
+        description: "Testing at Formula Student.",
+        blurColor: "rgba(0, 200, 0, 0.1)",
+    },
 ];
 
 const Photography: React.FC = () => {
