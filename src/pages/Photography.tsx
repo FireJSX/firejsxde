@@ -84,7 +84,7 @@ const photos: Photo[] = [
         blurColor: "rgba(200, 200, 20, 0.1)",
     },
     {
-        src: "/images/photography/photo-9.webp",
+        src: "/images/photography/photo-11.webp",
         date: "13 Jun 2025",
         location: "Deggendorf, Germany",
         description: "Testing at Formula Student.",
