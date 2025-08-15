@@ -12,6 +12,7 @@ import Photography from './pages/Photography';
 import LegalNotice from './pages/LegalNotice';
 import Development from './pages/Development';
 import Videography from "./pages/Videography";
+import OnAir from "./pages/OnAir";
 
 const AppRoutes: React.FC = () => (
     <Routes>
@@ -30,6 +31,7 @@ const AppRoutes: React.FC = () => (
         <Route path="/photography" element={<Photography />} />
         <Route path="/development" element={<Development />} />
         <Route path="/videography" element={<Videography />} />
+        <Route path="/onair" element={<OnAir />} />
         <Route path="/legalnotice" element={<LegalNotice />} />
     </Routes>
 );
