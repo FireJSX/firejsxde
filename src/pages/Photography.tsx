@@ -90,6 +90,36 @@ const photos: Photo[] = [
         description: "Testing at Formula Student.",
         blurColor: "rgba(0, 200, 0, 0.1)",
     },
+    {
+        src: "/images/photography/photo-12.webp",
+        date: "07 Sep 2025",
+        location: "Wurmannsquick, Germany",
+        description: "Sunset in the countryside.",
+        blurColor: "rgba(250, 0, 0, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-13.webp",
+        date: "07 Sep 2025",
+        location: "Passau, Germany",
+        description: "The moon at the Three Rivers Corner in Passau.",
+        blurColor: "rgba(0, 0, 25, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-14.webp",
+        date: "07 Sep 2025",
+        location: "Passau, Germany",
+        description: "Walk in the moonlight with a view over the Inn River.",
+        blurColor: "rgba(0, 0, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-15.webp",
+        date: "07 Sep 2025",
+        location: "Passau, Germany",
+        description: "View over the entire city from above.",
+        blurColor: "rgba(250, 0, 250, 0.1)",
+    },
+
+
 ];
 
 const Photography: React.FC = () => {
