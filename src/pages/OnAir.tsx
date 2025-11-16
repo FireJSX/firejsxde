@@ -10,7 +10,7 @@ const OnAir: React.FC = () => {
             <Navbar />
             <HeroBanner
                 title="On Air"
-                imageUrl="/images/onair/hero.webp"
+                imageUrl="/images/onair/Banner.webp"
                 className="onair-hero"
             />
             <main className="videography-page">
