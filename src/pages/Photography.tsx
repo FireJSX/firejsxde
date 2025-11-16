@@ -118,6 +118,41 @@ const photos: Photo[] = [
         description: "View over the entire city from above.",
         blurColor: "rgba(250, 0, 250, 0.1)",
     },
+    {
+        src: "/images/photography/photo-16.webp",
+        date: "15 Nov 2025",
+        location: "Passau, Germany",
+        description: "Nightshot at the bus station.",
+        blurColor: "rgba(255, 0, 0, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-17.webp",
+        date: "15 Nov 2025",
+        location: "Passau, Germany",
+        description: "A cruising ship on its way through the 3 rivers in Passau at night.",
+        blurColor: "rgba(250, 250, 0, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-18.webp",
+        date: "15 Nov 2025",
+        location: "Passau, Germany",
+        description: "Capturing a little moment in the small nightly streets.",
+        blurColor: "rgba(0, 0, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-19.webp",
+        date: "15 Nov 2025",
+        location: "Passau, Germany",
+        description: "Nightview at the St. Stephen's Cathedral from the Inn-Side.",
+        blurColor: "rgba(250, 150, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-20.webp",
+        date: "15 Nov 2025",
+        location: "Passau, Germany",
+        description: "View at at St. Stephen's Cathedral from the Veste Oberhaus.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
 
 
 ];
