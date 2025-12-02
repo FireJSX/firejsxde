@@ -153,6 +153,41 @@ const photos: Photo[] = [
         description: "View at at St. Stephen's Cathedral from the Veste Oberhaus.",
         blurColor: "rgba(250, 2500, 250, 0.1)",
     },
+    {
+        src: "/images/photography/photo-21.webp",
+        date: "22 Nov 2025",
+        location: "Donaustauf, Germany",
+        description: "View over Donaustauf through the pillars of the Wallhalla.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-22.webp",
+        date: "22 Nov 2025",
+        location: "Donaustauf, Germany",
+        description: "Lightpainting at the Wallhalla at night.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-23.webp",
+        date: "22 Nov 2025",
+        location: "Donaustauf, Germany",
+        description: "Nightsky through the pillars of the Wallhalla.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-24.webp",
+        date: "22 Nov 2025",
+        location: "Donaustauf, Germany",
+        description: "Wallhalla at night.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
+    {
+        src: "/images/photography/photo-25.webp",
+        date: "22 Nov 2025",
+        location: "Donaustauf, Germany",
+        description: "Wallhalla at night.",
+        blurColor: "rgba(250, 2500, 250, 0.1)",
+    },
 
 
 ];
