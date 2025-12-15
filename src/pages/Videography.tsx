@@ -44,6 +44,22 @@ const videos = [
         url: 'https://www.youtube.com/embed/JiVVNME7nx4',
         vertical: false,
     },
+    {
+        title: 'Trailer-Parody: Hochschul Musical 3',
+        description:
+            'In collaboration with a fellow student I produced this trailer as a marketing placement',
+        details: ['Regie', 'Storytelling','Screenplay'],
+        url: 'https://www.youtube.com/embed/kT_u2mJszzw?si=Vg26HXQRRMR-Q0Gk',
+        vertical: false,
+    },
+    {
+        title: 'Trailer-Parody: The Scheining',
+        description:
+            'In collaboration with a fellow student I produced this trailer as a marketing placement',
+        details: ['Regie', 'Storytelling','Screenplay'],
+        url: 'https://www.youtube.com/embed/3NVigI59R_8?si=XDOrMzJNj2tuGPZq',
+        vertical: false,
+    },
 ];
 
 const Videography: React.FC = () => {
@@ -73,6 +89,8 @@ const Videography: React.FC = () => {
                                     src={video.url}
                                     title={video.title}
                                     frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                    scrolling="no"
                                     allowFullScreen
                                 ></iframe>
                             </div>
@@ -91,6 +109,8 @@ const Videography: React.FC = () => {
                                     src={video.url}
                                     title={video.title}
                                     frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                    scrolling="no"
                                     allowFullScreen
                                 ></iframe>
                             </div>
