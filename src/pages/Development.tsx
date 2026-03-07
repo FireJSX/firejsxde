@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../assets/styles/main.scss';
 import HeroBanner from "../components/HeroBanner";
 
@@ -29,7 +27,6 @@ const handleDinoDownload = () => {
 const Development: React.FC = () => {
     return (
         <div>
-            <Navbar />
             <HeroBanner
                 title="Development"
                 imageUrl="/images/development/background.webp"
@@ -107,7 +104,6 @@ const Development: React.FC = () => {
             <br/>
             <br/>
             <br/>
-            <Footer/>
         </div>
     );
 };

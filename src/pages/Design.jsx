@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../assets/styles/main.scss';
 import HeroBanner from "../components/HeroBanner";
 
@@ -101,7 +99,6 @@ const Design = () => {
 
     return (
         <div>
-            <Navbar />
             <HeroBanner
                 title="Design"
                 imageUrl="/images/design/banner1.webp"
@@ -190,7 +187,6 @@ const Design = () => {
             <br/>
             <br/>
             <br/>
-            <Footer />
         </div>
     );
 };

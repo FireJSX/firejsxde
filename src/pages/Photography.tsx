@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import HeroBanner from '../components/HeroBanner';
 import '../assets/styles/main.scss';
 
@@ -402,7 +400,6 @@ const Photography: React.FC = () => {
 
     return (
         <div>
-            <Navbar />
             <HeroBanner
                 title="Photography"
                 imageUrl="/images/photography/hero.webp"
@@ -430,7 +427,6 @@ const Photography: React.FC = () => {
                     ))}
                 </div>
             </main>
-            <Footer />
         </div>
     );
 };

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../assets/styles/main.scss';
 
 const LegalNotice: React.FC = () => {
     return (
         <div>
-            <Navbar />
             <main className="legal-notice">
                 <h1>Legal Notice & Disclaimer</h1>
 
@@ -65,7 +62,6 @@ const LegalNotice: React.FC = () => {
                     By using this website, you agree to this disclaimer and its terms.
                 </p>
             </main>
-            <Footer />
         </div>
     );
 };
