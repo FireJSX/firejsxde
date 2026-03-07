@@ -1,13 +1,21 @@
 .about-page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
+  background: #0b0b0b;
+  color: white;
+  font-family: 'Teko', sans-serif;
 }
 
-.about-container {
-  display: flex;
-  height: 100%;
+.about-main {
+  width: 65vw;
+  margin-left: 35vw;
+  padding: 40px 35px 60px;
+  box-sizing: border-box;
+}
+
+.about-hero {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .about-image {
@@ -19,83 +27,306 @@
   top: 0;
 }
 
-.about-content {
-  width: 65vw;
-  margin-left: 35vw;
-  padding: 50px;
-  overflow-y: auto;
-  color: white;
-}
-
-.about {
-  font-family: 'Teko', sans-serif;
+.about-intro {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 25px 30px;
+  box-shadow: 0px 50px 50px -20px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
 
   h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    margin: 0 0 1rem;
+    color: white;
+    line-height: 1;
+  }
+
+  p {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    line-height: 1.45;
     margin-bottom: 1rem;
     color: white;
+    font-family: 'Wire One', sans-serif;
+  }
+}
+
+.about-section {
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 25px 30px;
+  box-shadow: 0px 50px 50px -20px rgba(0, 0, 0, 0.7);
+
+  h2 {
+    display: inline-block;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 1.2rem;
+    color: white;
+    line-height: 1;
+    padding: 0.25rem 0;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
+
+  p {
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.45;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: 'Wire One', sans-serif;
+  }
+}
+
+.about-muted {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.about-card {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  h3 {
+    font-size: 2rem;
+    margin: 0 0 0.5rem;
+    color: white;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    color: white;
+    font-family: 'Wire One', sans-serif;
+    line-height: 1.3;
+  }
+
+  span {
+    font-size: 1.05rem;
+    color: #8fd3ff;
+    font-family: 'Wire One', sans-serif;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-3px);
+  }
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skill-group {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
+
+  h3 {
+    font-size: 1.9rem;
+    margin: 0 0 0.8rem;
+    color: white;
+    line-height: 1;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+
+  li {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 0.55rem;
+    color: white;
+    font-family: 'Wire One', sans-serif;
+  }
+}
+
+.experience-container,
+.experience-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.experience-card,
+.exp-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
+
+  h3 {
+    font-size: 1.9rem;
+    margin: 0 0 0.8rem;
+    color: white;
+    line-height: 1;
   }
 
   p {
     font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    color: white;
+    font-family: 'Wire One', sans-serif;
   }
 
-  .fun-fact {
-    font-weight: bold;
-    color: #ff5733;
+  ul {
+    padding-left: 1.2rem;
+    margin-top: 0.75rem;
   }
 
-  .plot-twist {
-    font-weight: bold;
-    font-style: italic;
-    color: #0077cc;
+  li {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-family: 'Wire One', sans-serif;
+  }
+}
+
+.skills-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+
+  li {
+    font-size: 1.15rem;
+    line-height: 1.45;
+    margin-bottom: 0.55rem;
+    color: white;
+    font-family: 'Wire One', sans-serif;
+  }
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  padding: 0.45rem 0.8rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 1rem;
+  font-family: 'Wire One', sans-serif;
+  box-shadow: 0px 20px 20px -15px rgba(0, 0, 0, 0.7);
+}
+
+.about-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 12px 18px;
+  box-shadow: 0px 20px 20px -15px rgba(0, 0, 0, 0.7);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
   }
 
-  .highlight {
-    font-weight: bold;
-    border-left: 4px solid #0077cc;
-    padding-left: 10px;
+  &.secondary {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.about-outro {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  .about-main {
+    width: 60vw;
+    margin-left: 40vw;
   }
 
-  .cta {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #28a745;
-    text-align: center;
+  .about-image {
+    width: 40vw;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-container,
+  .experience-cards {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 900px) {
-  .about-container {
-    flex-direction: column;
-    box-sizing: border-box;
+  .about-page {
+    min-height: auto;
+  }
+
+  .about-main {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 15px 40px;
   }
 
   .about-image {
-    width: 100vw;
-    min-height: 40vh;
     position: relative;
-    box-sizing: border-box;
+    width: 100vw;
+    height: 42vh;
+    left: auto;
+    top: auto;
+    margin-left: -15px;
+    margin-right: -15px;
   }
 
-  .about-page {
-    overflow-x: hidden;
-    box-sizing: border-box;
+  .about-hero {
+    margin-bottom: 1rem;
   }
 
-
-  .about-content {
-    box-sizing: border-box;
-    width: 90%;
-    margin-left: 5%;
+  .about-intro,
+  .about-section {
     padding: 20px;
-    padding-top: 30px;
-    padding-right: 15px;
-    padding-left: 15px;
-    word-wrap: break-word;
-    overflow-x: hidden;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-container,
+  .experience-cards {
+    grid-template-columns: 1fr;
   }
 }
