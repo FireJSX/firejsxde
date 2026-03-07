@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 const NewsFeed: React.FC = () => {
     const [newsItems, setNewsItems] = useState([
+        { title: "News", content: "Updated About page out now!", color: "rgba(255, 9, 20, 0.1)", link: "/About" },
         { title: "News", content: "All new Photography page live now!", color: "rgba(83,152,255,0.1)", link: "/Photography" },
-        { title: "News", content: "My story is now in the About section", color: "rgba(255, 9, 20, 0.1)", link: "/About" },
-        { title: "News", content: "All new Development page Pre-Release is here!", color: "rgba(152,255,83,0.1)", link: "/Development" },
+        { title: "News", content: "All new Development page is here!", color: "rgba(152,255,83,0.1)", link: "/Development" },
     ]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
