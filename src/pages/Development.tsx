@@ -34,6 +34,41 @@ const Development: React.FC = () => {
             />
             <main className="Development">
                 <section className="project-section">
+                    <h1 className="project-title">TrailerPlanner</h1>
+
+                    <p className="project-description">
+                        TrailerPlanner is an Android App for Filmmakers, trying to provide a service to reproduce videos and plan the reproduction.
+                    </p>
+
+                    <div className="project-columns">
+                        <div className="left-column with-background">
+                            <h2 className="subheading">Features</h2>
+                            <ul className="how-to-play-list">
+                                <li><strong>Create & Edit Projects:</strong> Add a new project or open/edit one.</li>
+                                <li><strong>Store Multiple Projects:</strong> Manage different projects easily.</li>
+                                <li><strong>Import Videos:</strong> Quickly import videos from your phone.</li>
+                                <li><strong>Timeline generation:</strong> Instantly generate timelines with your imported video or do it manually.</li>
+                                <li><strong>Manual Timeline Frames:</strong> Change the frame picture manually with a picture from your phone.</li>
+                                <li><strong>Shot View:</strong> Edit every frame each with its location, roles, description and camera settings.</li>
+                                <li><strong>Scene View:</strong> Create individual Scenes and edit them each.</li>
+                            </ul>
+                        </div>
+                        <div className="right-column">
+                            <img
+                                src="/images/development/TrailerPlanner.webp"
+                                alt="TrailerPlanner Icon"
+                                className="project-icon"
+                            />
+                            <a className="hero-style-button"
+                               href="/downloads/TrailerPlanner.apk"
+                               download
+                            >
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <section className="project-section">
                     <h1 className="project-title">ConnectApp</h1>
 
                     <p className="project-description">
