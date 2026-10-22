@@ -4,6 +4,30 @@ import '../assets/styles/main.scss';
 
 const videos = [
     {
+        title: 'Trailer-Parody: 21 Degg Street',
+        description:
+            'In collaboration with a fellow student I produced this trailer as a marketing placement',
+        details: ['Regie', 'Postproduction','Screenplay'],
+        url: 'https://www.youtube.com/embed/M-xdlzS1GNo',
+        vertical: false,
+    },
+    {
+        title: 'Trailer-Parody: Totpool',
+        description:
+            'In collaboration with a fellow student I produced this trailer as a marketing placement',
+        details: ['Regie', 'Postproduction','Screenplay'],
+        url: 'https://www.youtube.com/embed/K2dTNKe0aC4',
+        vertical: false,
+    },
+    {
+        title: 'Trailer-Parody: Der groesste Showmann',
+        description:
+            'In collaboration with a fellow student I produced this trailer as a marketing placement',
+        details: ['Regie', 'Postproduction','Screenplay'],
+        url: 'https://www.youtube.com/embed/thyGiP0ZxJo',
+        vertical: false,
+    },
+    {
         title: '3D Advertisement - Mediadesign 2',
         description:
             "'B.O.B. - Big Ocean B(u)oy' – a thoughtful concipated fictional brand with a marketing strategy.",
