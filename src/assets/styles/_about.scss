@@ -1,332 +1,637 @@
 .about-page {
+  --about-bg: #090909;
+  --about-text: #f5f5f5;
+  --about-muted: #a5a5a5;
+  --about-line: rgba(255, 255, 255, 0.16);
+
   min-height: 100vh;
-  overflow-x: hidden;
-  background: #0b0b0b;
-  color: white;
-  font-family: 'Teko', sans-serif;
-}
+  overflow: clip;
+  background: var(--about-bg);
+  color: var(--about-text);
 
-.about-main {
-  width: 65vw;
-  margin-left: 35vw;
-  padding: 40px 35px 60px;
-  box-sizing: border-box;
-}
-
-.about-hero {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.about-image {
-  width: 35vw;
-  height: 100vh;
-  background: url('/images/about/me.webp') top center/cover no-repeat;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
-.about-intro {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  padding: 25px 30px;
-  box-shadow: 0px 50px 50px -20px rgba(0, 0, 0, 0.7);
-  margin-bottom: 1.5rem;
-
-  h1 {
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    margin: 0 0 1rem;
-    color: white;
-    line-height: 1;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  p {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-    line-height: 1.45;
-    margin-bottom: 1rem;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-  }
-}
-
-.about-section {
-  margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  padding: 25px 30px;
-  box-shadow: 0px 50px 50px -20px rgba(0, 0, 0, 0.7);
-
-  h2 {
-    display: inline-block;
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin: 0 0 1.2rem;
-    color: white;
-    line-height: 1;
-    padding: 0.25rem 0;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-  }
-
-  p {
-    font-size: clamp(1.15rem, 2vw, 1.45rem);
-    line-height: 1.45;
-    margin-bottom: 1rem;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-  }
-}
-
-.about-muted {
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.about-card {
-  display: block;
-  text-decoration: none;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  padding: 20px;
-  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
-  transition: background 0.3s ease, transform 0.2s ease;
-
-  h3 {
-    font-size: 2rem;
-    margin: 0 0 0.5rem;
-    color: white;
-    line-height: 1;
-  }
-
-  p {
-    font-size: 1.15rem;
-    margin-bottom: 0.8rem;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-    line-height: 1.3;
-  }
-
-  span {
-    font-size: 1.05rem;
-    color: #8fd3ff;
-    font-family: 'Wire One', sans-serif;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.16);
-    transform: translateY(-3px);
-  }
-}
-
-.skill-groups {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.skill-group {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  padding: 20px;
-  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
-
-  h3 {
-    font-size: 1.9rem;
-    margin: 0 0 0.8rem;
-    color: white;
-    line-height: 1;
-  }
-
-  ul {
-    padding-left: 1.2rem;
+  h1,
+  h2,
+  h3,
+  p,
+  figure {
     margin: 0;
   }
 
-  li {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    margin-bottom: 0.55rem;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-  }
-}
-
-.experience-container,
-.experience-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.experience-card,
-.exp-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  padding: 20px;
-  box-shadow: 0px 30px 30px -20px rgba(0, 0, 0, 0.7);
-
-  h3 {
-    font-size: 1.9rem;
-    margin: 0 0 0.8rem;
-    color: white;
-    line-height: 1;
+  a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 6px;
   }
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-  }
+  // Shared typography
 
-  ul {
-    padding-left: 1.2rem;
-    margin-top: 0.75rem;
-  }
-
-  li {
+  .about-eyebrow {
+    display: inline-block;
+    font-family: 'Teko', sans-serif;
     font-size: 1.05rem;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .about-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     color: white;
-    font-family: 'Wire One', sans-serif;
-  }
-}
+    font-family: 'Teko', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition:
+            gap 0.25s ease,
+            border-color 0.25s ease;
 
-.skills-list {
-  margin: 1rem 0 0;
-  padding-left: 1.2rem;
+    &:hover {
+      gap: 55px;
+      border-color: white;
+    }
 
-  li {
-    font-size: 1.15rem;
-    line-height: 1.45;
-    margin-bottom: 0.55rem;
-    color: white;
-    font-family: 'Wire One', sans-serif;
-  }
-}
-
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.tag {
-  padding: 0.45rem 0.8rem;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  color: white;
-  font-size: 1rem;
-  font-family: 'Wire One', sans-serif;
-  box-shadow: 0px 20px 20px -15px rgba(0, 0, 0, 0.7);
-}
-
-.about-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.2rem;
-}
-
-.cta-btn {
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  font-family: 'Wire One', sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  padding: 12px 18px;
-  box-shadow: 0px 20px 20px -15px rgba(0, 0, 0, 0.7);
-  transition: background 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    > span {
+      flex-shrink: 0;
+      font-family: sans-serif;
+    }
   }
 
-  &.secondary {
-    background: rgba(255, 255, 255, 0.08);
-  }
-}
-
-.about-outro {
-  margin-bottom: 0;
-}
-
-@media (max-width: 1100px) {
-  .about-main {
-    width: 60vw;
-    margin-left: 40vw;
-  }
-
-  .about-image {
-    width: 40vw;
-  }
-
-  .skill-groups {
-    grid-template-columns: 1fr;
-  }
-
-  .experience-container,
-  .experience-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .about-page {
-    min-height: auto;
-  }
-
-  .about-main {
-    width: 100%;
-    margin-left: 0;
-    padding: 20px 15px 40px;
-  }
-
-  .about-image {
-    position: relative;
-    width: 100vw;
-    height: 42vh;
-    left: auto;
-    top: auto;
-    margin-left: -15px;
-    margin-right: -15px;
-  }
+  // Hero
 
   .about-hero {
-    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 100px);
+    width: 100%;
+    max-width: 1600px;
+    min-height: 90svh;
+    margin: 0 auto;
+    padding: 150px 6% 85px;
   }
 
-  .about-intro,
+  .about-hero__content {
+    min-width: 0;
+
+    h1 {
+      margin: 25px 0 30px;
+      font-family: 'Teko', sans-serif;
+      font-size: clamp(5rem, 10.5vw, 11rem);
+      font-weight: 500;
+      line-height: 0.85;
+      letter-spacing: -0.025em;
+
+      span {
+        color: #a8a8a8;
+      }
+    }
+
+    .about-link {
+      margin-top: 35px;
+    }
+  }
+
+  .about-hero__lead {
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.1;
+    color: var(--about-text);
+  }
+
+  .about-hero__description {
+    max-width: 550px;
+    margin-top: 25px;
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.5rem, 2vw, 1.9rem);
+    line-height: 1.25;
+    color: var(--about-muted);
+  }
+
+  .about-hero__portrait {
+    position: relative;
+    align-self: stretch;
+    min-width: 0;
+    min-height: 540px;
+    overflow: hidden;
+    background: #171717;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      pointer-events: none;
+      background: linear-gradient(
+              180deg,
+              transparent 55%,
+              rgba(0, 0, 0, 0.75) 100%
+      );
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    figcaption {
+      position: absolute;
+      z-index: 1;
+      right: 25px;
+      bottom: 25px;
+      left: 25px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      font-family: 'Teko', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.8);
+
+      span:last-child {
+        max-width: 170px;
+        text-align: right;
+      }
+    }
+  }
+
+  // Sections
+
   .about-section {
-    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 6%;
+    border-top: 1px solid var(--about-line);
+    scroll-margin-top: 90px;
   }
 
-  .about-grid {
-    grid-template-columns: 1fr;
+  .about-section-heading {
+    margin-bottom: 45px;
+
+    h2 {
+      margin-top: 18px;
+      font-family: 'Teko', sans-serif;
+      font-size: clamp(3.5rem, 6.5vw, 6.5rem);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+    }
   }
 
-  .skill-groups {
-    grid-template-columns: 1fr;
+  .about-section-heading--wide {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 35px;
+
+    > p {
+      max-width: 300px;
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.15;
+      text-align: right;
+      color: var(--about-muted);
+    }
   }
 
-  .experience-container,
-  .experience-cards {
-    grid-template-columns: 1fr;
+  // Background
+
+  .about-story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(40px, 7vw, 110px);
+
+    .about-section-heading {
+      margin-bottom: 0;
+    }
+  }
+
+  .about-story__text {
+    > p {
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.3;
+      color: var(--about-muted);
+
+      & + p {
+        margin-top: 25px;
+      }
+    }
+
+    > .about-story__lead {
+      margin-bottom: 30px;
+      font-size: clamp(2rem, 2.7vw, 2.6rem);
+      line-height: 1.15;
+      color: var(--about-text);
+    }
+  }
+
+  .about-study {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid var(--about-line);
+
+    strong {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    > span:last-child {
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--about-muted);
+    }
+  }
+
+  // Portfolio links
+
+  .about-disciplines {
+    border-top: 1px solid var(--about-line);
+  }
+
+  .about-discipline {
+    display: grid;
+    grid-template-columns:
+      35px
+      minmax(0, 0.9fr)
+      minmax(0, 1fr)
+      35px;
+    align-items: center;
+    gap: 30px;
+    min-height: 130px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--about-line);
+    color: var(--about-text);
+    text-decoration: none;
+
+    h3 {
+      font-family: 'Teko', sans-serif;
+      font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 0.95;
+      transition: color 0.25s ease;
+    }
+
+    p {
+      max-width: 450px;
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.7rem;
+      line-height: 1.2;
+      color: var(--about-muted);
+    }
+
+    &:hover h3 {
+      color: #b8b8b8;
+    }
+
+    &:hover .about-discipline__arrow {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  .about-discipline__number {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    color: var(--about-muted);
+  }
+
+  .about-discipline__arrow {
+    justify-self: end;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    transition: transform 0.25s ease;
+  }
+
+  // Experience
+
+  .about-experiences {
+    border-top: 1px solid var(--about-line);
+  }
+
+  .about-experience {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(35px, 7vw, 110px);
+    padding: 45px 0;
+
+    & + .about-experience {
+      border-top: 1px solid var(--about-line);
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .about-experience__heading {
+    h3 {
+      margin: 20px 0 15px;
+      font-family: 'Teko', sans-serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 0.95;
+    }
+  }
+
+  .about-experience__role {
+    display: block;
+    font-family: 'Wire One', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--about-muted);
+  }
+
+  .about-experience__text {
+    > p {
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.3;
+      color: #c4c4c4;
+
+      & + p {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .about-recognition {
+    margin-top: 30px;
+    padding: 5px 0 5px 22px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+
+    p {
+      margin-top: 12px;
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      color: var(--about-text);
+    }
+  }
+
+  // Skills
+
+  .about-skills {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .about-skill-group {
+    padding-top: 25px;
+    border-top: 1px solid var(--about-line);
+
+    h3 {
+      margin: 20px 0 25px;
+      font-family: 'Teko', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--about-line);
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      color: var(--about-muted);
+    }
+  }
+
+  // Outro
+
+  .about-section--outro {
+    padding-top: 110px;
+    padding-bottom: 120px;
+
+    h2 {
+      margin: 25px 0 30px;
+      font-family: 'Teko', sans-serif;
+      font-size: clamp(4.5rem, 9vw, 9rem);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+
+      span {
+        color: #a8a8a8;
+      }
+    }
+
+    > p {
+      max-width: 650px;
+      font-family: 'Wire One', sans-serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+      line-height: 1.2;
+      color: var(--about-muted);
+    }
+
+    .about-link {
+      margin-top: 35px;
+    }
+  }
+
+  // Tablet
+
+  @media (max-width: 1000px) {
+    .about-hero {
+      gap: 35px;
+      padding-top: 130px;
+    }
+
+    .about-hero__portrait {
+      min-height: 500px;
+
+      figcaption {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        span:last-child {
+          max-width: none;
+          text-align: left;
+        }
+      }
+    }
+
+    .about-discipline {
+      grid-template-columns:
+        25px
+        minmax(0, 0.9fr)
+        minmax(0, 1fr)
+        25px;
+      gap: 20px;
+    }
+
+    .about-skills {
+      gap: 25px;
+    }
+  }
+
+  // Mobile
+
+  @media (max-width: 700px) {
+    .about-hero {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: auto;
+      gap: 45px;
+      padding: 125px 6% 65px;
+    }
+
+    .about-hero__content {
+      h1 {
+        font-size: clamp(5.5rem, 20vw, 8rem);
+      }
+    }
+
+    .about-hero__lead {
+      font-size: 2.3rem;
+    }
+
+    .about-hero__description {
+      font-size: 1.7rem;
+    }
+
+    .about-hero__portrait {
+      align-self: auto;
+      min-height: 0;
+      height: clamp(360px, 65svh, 580px);
+
+      figcaption {
+        flex-direction: row;
+        align-items: flex-end;
+
+        span:last-child {
+          max-width: 160px;
+          text-align: right;
+        }
+      }
+    }
+
+    .about-section {
+      padding: 65px 6%;
+    }
+
+    .about-section-heading {
+      margin-bottom: 35px;
+
+      h2 {
+        font-size: clamp(3.2rem, 12vw, 5rem);
+      }
+    }
+
+    .about-section-heading--wide {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 25px;
+
+      > p {
+        text-align: left;
+      }
+    }
+
+    .about-story {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 35px;
+    }
+
+    .about-discipline {
+      grid-template-columns: 25px minmax(0, 1fr) 25px;
+      gap: 12px 18px;
+      min-height: auto;
+      padding: 25px 0;
+
+      h3 {
+        font-size: 2.8rem;
+      }
+
+      p {
+        grid-column: 2;
+        font-size: 1.6rem;
+      }
+    }
+
+    .about-discipline__number {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .about-discipline__arrow {
+      grid-column: 3;
+      grid-row: 1;
+      font-size: 1.4rem;
+    }
+
+    .about-experience {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 25px;
+      padding: 35px 0;
+    }
+
+    .about-experience__heading h3 {
+      font-size: 3rem;
+    }
+
+    .about-skills {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 35px;
+    }
+
+    .about-skill-group h3 {
+      margin-bottom: 15px;
+    }
+
+    .about-section--outro {
+      padding-top: 75px;
+      padding-bottom: 85px;
+
+      h2 {
+        font-size: clamp(4rem, 15vw, 6.5rem);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
   }
 }

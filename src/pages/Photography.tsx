@@ -1,433 +1,777 @@
-import React from 'react';
-import HeroBanner from '../components/HeroBanner';
+
+import React, {
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
+
+import { useSearchParams } from 'react-router-dom';
+
+import {
+    photos,
+    photoSeries,
+    type Photo,
+    type PhotoSeries,
+} from '../data/photographyData';
+
 import '../assets/styles/main.scss';
 
-interface Photo {
-    src: string;
-    date: string;
-    location: string;
-    description: string;
-    blurColor: string;
+// --------------------------------------------------
+// Helpers
+// --------------------------------------------------
+
+const getPhotoId = (photo: Photo): number => {
+    const match = photo.src.match(/photo-(\d+)\.webp$/);
+    return match ? Number(match[1]) : -1;
+};
+
+const formatDate = (date: string): string => {
+    return new Date(`${date}T12:00:00`).toLocaleDateString(
+        'en-GB',
+        {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        }
+    );
+};
+
+const sortedPhotos = [...photos].sort(
+    (a, b) => b.date.localeCompare(a.date)
+);
+
+const publishedSeries = photoSeries.filter(
+    (series) => series.published
+);
+
+// --------------------------------------------------
+// Photo Gallery
+// --------------------------------------------------
+
+interface PhotoGalleryProps {
+    items: Photo[];
+    onPhotoClick: (photo: Photo) => void;
 }
 
-const photos: Photo[] = [
-    {
-        src: "/images/photography/photo-1.webp",
-        date: "2025-03-01",
-        location: "Dresden, Germany",
-        description: "A cloudy day next to the Theaterplatz.",
-        blurColor: "rgba(255, 99, 71, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-2.webp",
-        date: "2025-03-03",
-        location: "Dresden, Germany",
-        description: "Sunset over the Theaterplatz.",
-        blurColor: "rgba(30, 144, 255, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-3.webp",
-        date: "2024-07-19",
-        location: "Friedrichshafen, Germany",
-        description: "Sunny day at the Bodensee.",
-        blurColor: "rgba(50, 205, 50, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-4.webp",
-        date: "2024-07-19",
-        location: "Deggendorf, Germany",
-        description: "Sunset walk in Deggendorf.",
-        blurColor: "rgba(250, 0, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-5.webp",
-        date: "2024-07-19",
-        location: "Deggendorf, Germany",
-        description: "Locks near the Donau in Deggendorf.",
-        blurColor: "rgba(250, 255, 50, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-6.webp",
-        date: "2025-03-01",
-        location: "Dresden, Germany",
-        description: "A cloudy day at the Zwinger in Dresden.",
-        blurColor: "rgba(0, 205, 100, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-7.webp",
-        date: "2025-03-01",
-        location: "Dresden, Germany",
-        description: "Action on the Theaterplatz.",
-        blurColor: "rgba(200, 200, 200, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-8.webp",
-        date: "2025-05-23",
-        location: "Deggendorf, Germany",
-        description: "Aftershow-Party at the Deggendorf Institute of Technology.",
-        blurColor: "rgba(50, 50, 150, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-9.webp",
-        date: "2025-08-09",
-        location: "Most, Czech Republic",
-        description: "FSCzech Formula Student Event.",
-        blurColor: "rgba(0, 0, 200, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-10.webp",
-        date: "2025-08-07",
-        location: "Most, Czech Republic",
-        description: "Golden Hour - FSCzech Formula Student Event.",
-        blurColor: "rgba(200, 200, 20, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-11.webp",
-        date: "2025-06-13",
-        location: "Deggendorf, Germany",
-        description: "Testing at Formula Student.",
-        blurColor: "rgba(0, 200, 0, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-12.webp",
-        date: "2025-09-07",
-        location: "Wurmannsquick, Germany",
-        description: "Sunset in the countryside.",
-        blurColor: "rgba(250, 0, 0, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-13.webp",
-        date: "2025-09-07",
-        location: "Passau, Germany",
-        description: "The moon at the Three Rivers Corner in Passau.",
-        blurColor: "rgba(0, 0, 25, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-14.webp",
-        date: "2025-09-07",
-        location: "Passau, Germany",
-        description: "Walk in the moonlight with a view over the Inn River.",
-        blurColor: "rgba(0, 0, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-15.webp",
-        date: "2025-09-07",
-        location: "Passau, Germany",
-        description: "View over the entire city from above.",
-        blurColor: "rgba(250, 0, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-16.webp",
-        date: "2025-11-15",
-        location: "Passau, Germany",
-        description: "Nightshot at the bus station.",
-        blurColor: "rgba(255, 0, 0, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-17.webp",
-        date: "2025-11-15",
-        location: "Passau, Germany",
-        description: "A cruising ship on its way through the 3 rivers in Passau at night.",
-        blurColor: "rgba(250, 250, 0, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-18.webp",
-        date: "2025-11-15",
-        location: "Passau, Germany",
-        description: "Capturing a little moment in the small nightly streets.",
-        blurColor: "rgba(0, 0, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-19.webp",
-        date: "2025-11-15",
-        location: "Passau, Germany",
-        description: "Nightview at the St. Stephen's Cathedral from the Inn-Side.",
-        blurColor: "rgba(250, 150, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-20.webp",
-        date: "2025-11-15",
-        location: "Passau, Germany",
-        description: "View at at St. Stephen's Cathedral from the Veste Oberhaus.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-21.webp",
-        date: "2025-11-22",
-        location: "Donaustauf, Germany",
-        description: "View over Donaustauf through the pillars of the Wallhalla.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-22.webp",
-        date: "2025-11-22",
-        location: "Donaustauf, Germany",
-        description: "Lightpainting at the Wallhalla at night.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-23.webp",
-        date: "2025-11-22",
-        location: "Donaustauf, Germany",
-        description: "Nightsky through the pillars of the Wallhalla.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-24.webp",
-        date: "2025-11-22",
-        location: "Donaustauf, Germany",
-        description: "Wallhalla at night.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-25.webp",
-        date: "2025-11-22",
-        location: "Donaustauf, Germany",
-        description: "Wallhalla at night.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-26.webp",
-        date: "2026-01-01",
-        location: "Wurmannsquick, Germany",
-        description: "Silvester night.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-27.webp",
-        date: "2026-01-01",
-        location: "Wurmannsquick, Germany",
-        description: "Silvester night.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-28.webp",
-        date: "2026-01-04",
-        location: "Passau, Germany",
-        description: "View over the city from the Veste Oberhaus.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-29.webp",
-        date: "2026-02-02",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-30.webp",
-        date: "2026-02-02",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-31.webp",
-        date: "2026-02-02",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-32.webp",
-        date: "2026-02-07",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-33.webp",
-        date: "2026-02-07",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-34.webp",
-        date: "2026-02-07",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-35.webp",
-        date: "2026-02-07",
-        location: "Passau, Germany",
-        description: "Nightwalk through Passau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-36.webp",
-        date: "2026-02-11",
-        location: "Vilshofen, Germany",
-        description: "View over the city and the Donau.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-37.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-38.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-39.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-40.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-41.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-42.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-43.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-44.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-45.webp",
-        date: "2026-02-26",
-        location: "Regensburg, Germany",
-        description: "Taking a walk through the city.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-46.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-47.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-48.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-49.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-50.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-51.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-52.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
-    {
-        src: "/images/photography/photo-53.webp",
-        date: "2026-01-30",
-        location: "Passau, Germany",
-        description: "Part of my urban photo series about loneliness.",
-        blurColor: "rgba(250, 2500, 250, 0.1)",
-    },
+const PhotoGallery: React.FC<PhotoGalleryProps> = ({
+                                                       items,
+                                                       onPhotoClick,
+                                                   }) => {
+    return (
+        <div className="photography-gallery">
+            {items.map((photo) => (
+                <button
+                    key={photo.src}
+                    className="photography-gallery__item"
+                    type="button"
+                    onClick={() => onPhotoClick(photo)}
+                    aria-label={`View photo: ${photo.description}, ${photo.location}`}
+                >
+                    <img
+                        src={photo.src}
+                        alt={photo.description || photo.location}
+                        loading="lazy"
+                        decoding="async"
+                    />
 
-];
+                    <div className="photography-gallery__overlay">
+                        <span className="photography-gallery__location">
+                            {photo.location}
+                        </span>
+
+                        <span className="photography-gallery__date">
+                            {formatDate(photo.date)}
+                        </span>
+
+                        <span className="photography-gallery__description">
+                            {photo.description}
+                        </span>
+
+                        <span className="photography-gallery__view">
+                            View photograph ↗
+                        </span>
+                    </div>
+                </button>
+            ))}
+        </div>
+    );
+};
+
+// --------------------------------------------------
+// Photo Series Card
+// --------------------------------------------------
+
+interface SeriesCardProps {
+    series: PhotoSeries;
+    onClick: () => void;
+    index: number;
+}
+
+const SeriesCard: React.FC<SeriesCardProps> = ({
+                                                   series,
+                                                   onClick,
+                                                   index,
+                                               }) => {
+    return (
+        <button
+            className="photography-series-card"
+            type="button"
+            onClick={onClick}
+            aria-label={`Open ${series.title}`}
+        >
+            <div className="photography-series-card__image">
+                <img
+                    src={series.cover}
+                    alt={series.title}
+                    loading="lazy"
+                />
+
+                <span className="photography-series-card__arrow">
+                    ↗
+                </span>
+            </div>
+
+            <div className="photography-series-card__details">
+                <span className="photography-series-card__number">
+                    {String(index + 1).padStart(2, '0')}
+                </span>
+
+                <div>
+                    <h3>{series.title}</h3>
+                    <p>{series.subtitle}</p>
+                </div>
+
+                <span className="photography-series-card__count">
+                    {series.photoIds.length} PHOTOS
+                </span>
+            </div>
+        </button>
+    );
+};
+
+// --------------------------------------------------
+// Photography Page
+// --------------------------------------------------
 
 const Photography: React.FC = () => {
-    const columnCount = 3;
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const sortedPhotos = [...photos].sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+    const [activePhoto, setActivePhoto] = useState<Photo | null>(
+        null
+    );
 
-    const columns: Photo[][] = Array.from({ length: columnCount }, () => []);
+    const touchStartX = useRef<number | null>(null);
+    const lightboxCloseRef = useRef<HTMLButtonElement | null>(null);
+    const previousFocusRef = useRef<HTMLElement | null>(null);
 
-    sortedPhotos.forEach((photo, index) => {
-        columns[index % columnCount].push(photo);
-    });
+    const seriesId = searchParams.get('series');
+
+    // --------------------------------------------------
+    // Series selection
+    // --------------------------------------------------
+
+    const activeSeries = useMemo(() => {
+        return (
+            publishedSeries.find(
+                (series) => series.id === seriesId
+            ) ?? null
+        );
+    }, [seriesId]);
+
+    const featuredSeries = publishedSeries.find(
+        (series) => series.featured
+    );
+
+    const otherSeries = publishedSeries.filter(
+        (series) => !series.featured
+    );
+
+    const seriesPhotos = useMemo(() => {
+        if (!activeSeries) {
+            return [];
+        }
+
+        return activeSeries.photoIds
+            .map((id) =>
+                photos.find(
+                    (photo) => getPhotoId(photo) === id
+                )
+            )
+            .filter(
+                (photo): photo is Photo => Boolean(photo)
+            );
+    }, [activeSeries]);
+
+    // --------------------------------------------------
+    // Lightbox navigation
+    // --------------------------------------------------
+
+    const lightboxPhotos = activeSeries
+        ? seriesPhotos
+        : sortedPhotos;
+
+    const activePhotoIndex = activePhoto
+        ? lightboxPhotos.findIndex(
+            (photo) => photo.src === activePhoto.src
+        )
+        : -1;
+
+    const openPhoto = (photo: Photo) => {
+        previousFocusRef.current =
+            document.activeElement instanceof HTMLElement
+                ? document.activeElement
+                : null;
+
+        setActivePhoto(photo);
+    };
+
+    const closePhoto = () => {
+        setActivePhoto(null);
+
+        requestAnimationFrame(() => {
+            previousFocusRef.current?.focus();
+        });
+    };
+
+    const navigatePhoto = (direction: number) => {
+        if (
+            activePhotoIndex < 0 ||
+            lightboxPhotos.length === 0
+        ) {
+            return;
+        }
+
+        const nextIndex =
+            (
+                activePhotoIndex +
+                direction +
+                lightboxPhotos.length
+            ) % lightboxPhotos.length;
+
+        setActivePhoto(lightboxPhotos[nextIndex]);
+    };
+
+    // --------------------------------------------------
+    // Open / close photo series
+    // --------------------------------------------------
+
+    const openSeries = (id: string) => {
+        setActivePhoto(null);
+        setSearchParams({ series: id });
+    };
+
+    const closeSeries = () => {
+        setActivePhoto(null);
+        setSearchParams({});
+    };
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto',
+        });
+    }, [seriesId]);
+
+    // --------------------------------------------------
+    // Lightbox keyboard handling
+    // --------------------------------------------------
+
+    useEffect(() => {
+        if (!activePhoto) {
+            return;
+        }
+
+        const previousOverflow = document.body.style.overflow;
+
+        document.body.style.overflow = 'hidden';
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closePhoto();
+                return;
+            }
+
+            if (
+                activePhotoIndex >= 0 &&
+                lightboxPhotos.length > 0
+            ) {
+                if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+
+                    const nextIndex =
+                        (activePhotoIndex + 1) %
+                        lightboxPhotos.length;
+
+                    setActivePhoto(lightboxPhotos[nextIndex]);
+                }
+
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+
+                    const previousIndex =
+                        (
+                            activePhotoIndex -
+                            1 +
+                            lightboxPhotos.length
+                        ) % lightboxPhotos.length;
+
+                    setActivePhoto(
+                        lightboxPhotos[previousIndex]
+                    );
+                }
+            }
+
+            // Keep keyboard focus inside the lightbox.
+            if (event.key === 'Tab') {
+                const dialog = document.querySelector(
+                    '.photography-lightbox__content'
+                );
+
+                if (!dialog) {
+                    return;
+                }
+
+                const focusableElements =
+                    dialog.querySelectorAll<HTMLElement>(
+                        'button:not(:disabled), a[href], [tabindex]:not([tabindex="-1"])'
+                    );
+
+                if (focusableElements.length === 0) {
+                    return;
+                }
+
+                const first = focusableElements[0];
+                const last =
+                    focusableElements[
+                    focusableElements.length - 1
+                        ];
+
+                if (
+                    event.shiftKey &&
+                    document.activeElement === first
+                ) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (
+                    !event.shiftKey &&
+                    document.activeElement === last
+                ) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+
+        window.addEventListener(
+            'keydown',
+            handleKeyDown
+        );
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+
+            window.removeEventListener(
+                'keydown',
+                handleKeyDown
+            );
+        };
+    }, [
+        activePhoto,
+        activePhotoIndex,
+        lightboxPhotos,
+    ]);
+
+    useEffect(() => {
+        if (activePhoto) {
+            lightboxCloseRef.current?.focus();
+        }
+    }, [Boolean(activePhoto)]);
+
+    // --------------------------------------------------
+    // Rendering
+    // --------------------------------------------------
 
     return (
-        <div>
-            <HeroBanner
-                title="Photography"
-                imageUrl="/images/photography/hero.webp"
-                className="hero"
-            />
-            <main className="photography">
-                <div className="photo-gallery">
-                    {columns.map((column, colIndex) => (
-                        <div className="photo-column" key={colIndex}>
-                            {column.map((photo, index) => (
-                                <div className="photo-container" key={index}>
-                                    <img
-                                        src={photo.src}
-                                        alt={photo.location}
-                                        className="photo"
-                                    />
-                                    <div className="photo-info">
-                                        <div className="photo-location">{photo.location}</div>
-                                        <div className="photo-date">{photo.date}</div>
-                                        <div className="photo-description">{photo.description}</div>
-                                    </div>
-                                </div>
-                            ))}
+        <main className="photography-page">
+            {activeSeries ? (
+                <>
+                    {/* SERIES HERO */}
+
+                    <section className="photography-series-hero">
+                        <img
+                            className="photography-series-hero__background"
+                            src={activeSeries.cover}
+                            alt=""
+                        />
+
+                        <div className="photography-series-hero__shade" />
+
+                        <div className="photography-series-hero__content">
+                            <button
+                                type="button"
+                                className="photography-back"
+                                onClick={closeSeries}
+                            >
+                                ← ALL PHOTOGRAPHY
+                            </button>
+
+                            <div className="photography-series-hero__heading">
+                                <span className="photography-eyebrow">
+                                    PHOTO STORY /{' '}
+                                    {activeSeries.photoIds.length}{' '}
+                                    PHOTOGRAPHS
+                                </span>
+
+                                <h1>{activeSeries.title}</h1>
+
+                                <p>{activeSeries.description}</p>
+                            </div>
                         </div>
-                    ))}
+                    </section>
+
+                    {/* SERIES GALLERY */}
+
+                    <section className="photography-section photography-section--series">
+                        <div className="photography-section__heading">
+                            <div>
+                                <span className="photography-eyebrow">
+                                    THE SERIES
+                                </span>
+
+                                <h2>Through the lens.</h2>
+                            </div>
+
+                            <span className="photography-section__counter">
+                                {String(seriesPhotos.length).padStart(
+                                    2,
+                                    '0'
+                                )}{' '}
+                                IMAGES
+                            </span>
+                        </div>
+
+                        <PhotoGallery
+                            items={seriesPhotos}
+                            onPhotoClick={openPhoto}
+                        />
+
+                        <button
+                            type="button"
+                            className="photography-bottom-link"
+                            onClick={closeSeries}
+                        >
+                            ← BACK TO ALL PHOTOGRAPHY
+                        </button>
+                    </section>
+                </>
+            ) : (
+                <>
+                    {/* MAIN HERO */}
+
+                    <section className="photography-hero">
+                        <img
+                            className="photography-hero__background"
+                            src="/images/photography/hero.webp"
+                            alt=""
+                        />
+
+                        <div className="photography-hero__shade" />
+
+                        <div className="photography-hero__content">
+                            <span className="photography-eyebrow">
+                                JONAS / VISUAL PORTFOLIO
+                            </span>
+
+                            <h1>
+                                Photography<span>.</span>
+                            </h1>
+
+                            <p>
+                                Places. People. Passing moments.
+                                A collection of stories told through
+                                my lens.
+                            </p>
+
+                            <a
+                                className="photography-hero__scroll"
+                                href="#featured"
+                            >
+                                EXPLORE MY WORK
+                                <span>↓</span>
+                            </a>
+                        </div>
+
+                        <span className="photography-hero__side-label">
+                            SELECTED PHOTOGRAPHY
+                        </span>
+                    </section>
+
+                    {/* FEATURED STORY */}
+
+                    {featuredSeries && (
+                        <section
+                            id="featured"
+                            className="photography-section photography-section--featured"
+                        >
+                            <div className="photography-section__heading">
+                                <div>
+                                    <span className="photography-eyebrow">
+                                        01 / SELECTED WORK
+                                    </span>
+
+                                    <h2>Featured story.</h2>
+                                </div>
+
+                                <span className="photography-section__counter">
+                                    A CLOSER LOOK
+                                </span>
+                            </div>
+
+                            <button
+                                type="button"
+                                className="photography-featured"
+                                onClick={() =>
+                                    openSeries(featuredSeries.id)
+                                }
+                            >
+                                <img
+                                    src={featuredSeries.cover}
+                                    alt={featuredSeries.title}
+                                    loading="lazy"
+                                />
+
+                                <div className="photography-featured__shade" />
+
+                                <div className="photography-featured__content">
+                                    <span className="photography-eyebrow">
+                                        FEATURED PHOTOGRAPHY PROJECT
+                                    </span>
+
+                                    <h3>{featuredSeries.title}</h3>
+
+                                    <p>
+                                        {featuredSeries.description}
+                                    </p>
+
+                                    <span className="photography-featured__action">
+                                        EXPLORE SERIES
+                                        <span>↗</span>
+                                    </span>
+                                </div>
+
+                                <span className="photography-featured__index">
+                                    01 /{' '}
+                                    {String(
+                                        publishedSeries.length
+                                    ).padStart(2, '0')}
+                                </span>
+                            </button>
+                        </section>
+                    )}
+
+                    {/* OTHER PHOTO STORIES */}
+
+                    {otherSeries.length > 0 && (
+                        <section className="photography-section">
+                            <div className="photography-section__heading">
+                                <div>
+                                    <span className="photography-eyebrow">
+                                        02 / COLLECTIONS
+                                    </span>
+
+                                    <h2>Photo stories.</h2>
+                                </div>
+
+                                <p className="photography-section__intro">
+                                    More than individual frames.
+                                    A collection of places, moods and
+                                    moments.
+                                </p>
+                            </div>
+
+                            <div className="photography-series-grid">
+                                {otherSeries.map(
+                                    (series, index) => (
+                                        <SeriesCard
+                                            key={series.id}
+                                            series={series}
+                                            index={index + 1}
+                                            onClick={() =>
+                                                openSeries(series.id)
+                                            }
+                                        />
+                                    )
+                                )}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* COMPLETE PHOTO ARCHIVE */}
+
+                    <section
+                        id="archive"
+                        className="photography-section photography-section--archive"
+                    >
+                        <div className="photography-section__heading">
+                            <div>
+                                <span className="photography-eyebrow">
+                                    03 / THE ARCHIVE
+                                </span>
+
+                                <h2>All photography.</h2>
+                            </div>
+
+                            <span className="photography-section__counter">
+                                {String(
+                                    sortedPhotos.length
+                                ).padStart(2, '0')}{' '}
+                                PHOTOGRAPHS
+                            </span>
+                        </div>
+
+                        <p className="photography-archive-intro">
+                            An ongoing collection of photographs,
+                            ordered from newest to oldest.
+                        </p>
+
+                        <PhotoGallery
+                            items={sortedPhotos}
+                            onPhotoClick={openPhoto}
+                        />
+                    </section>
+                </>
+            )}
+
+            {/* FULLSCREEN PHOTO LIGHTBOX */}
+
+            {activePhoto && (
+                <div
+                    className="photography-lightbox"
+                    role="presentation"
+                    onMouseDown={(event) => {
+                        if (
+                            event.target === event.currentTarget
+                        ) {
+                            closePhoto();
+                        }
+                    }}
+                    onTouchStart={(event) => {
+                        touchStartX.current =
+                            event.touches[0].clientX;
+                    }}
+                    onTouchEnd={(event) => {
+                        if (touchStartX.current === null) {
+                            return;
+                        }
+
+                        const difference =
+                            touchStartX.current -
+                            event.changedTouches[0].clientX;
+
+                        if (Math.abs(difference) > 60) {
+                            navigatePhoto(
+                                difference > 0 ? 1 : -1
+                            );
+                        }
+
+                        touchStartX.current = null;
+                    }}
+                    onTouchCancel={() => {
+                        touchStartX.current = null;
+                    }}
+                >
+                    <div
+                        className="photography-lightbox__content"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={`Photograph from ${activePhoto.location}`}
+                    >
+                        {/* CLOSE BUTTON */}
+
+                        <button
+                            ref={lightboxCloseRef}
+                            className="photography-lightbox__close"
+                            type="button"
+                            onClick={closePhoto}
+                            aria-label="Close photograph"
+                        >
+                            ×
+                        </button>
+
+                        {/* IMAGE + NAVIGATION */}
+
+                        <div className="photography-lightbox__image-wrapper">
+
+                            {/* PREVIOUS PHOTO */}
+
+                            <button
+                                className="photography-lightbox__navigation photography-lightbox__navigation--previous"
+                                type="button"
+                                onClick={() => navigatePhoto(-1)}
+                                aria-label="Previous photograph"
+                            >
+                                <span
+                                    className="photography-lightbox__chevron photography-lightbox__chevron--left"
+                                    aria-hidden="true"
+                                />
+                            </button>
+
+                            <img
+                                src={activePhoto.src}
+                                alt={
+                                    activePhoto.description ||
+                                    activePhoto.location
+                                }
+                                draggable={false}
+                            />
+
+                            {/* NEXT PHOTO */}
+
+                            <button
+                                className="photography-lightbox__navigation photography-lightbox__navigation--next"
+                                type="button"
+                                onClick={() => navigatePhoto(1)}
+                                aria-label="Next photograph"
+                            >
+                                <span
+                                    className="photography-lightbox__chevron photography-lightbox__chevron--right"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </div>
+
+                        {/* PHOTO INFORMATION */}
+
+                        <div className="photography-lightbox__info">
+                            <div>
+                                <h3>{activePhoto.location}</h3>
+                                <p>{activePhoto.description}</p>
+                            </div>
+
+                            <div className="photography-lightbox__meta">
+                                <span>
+                                    {formatDate(
+                                        activePhoto.date
+                                    )}
+                                </span>
+
+                                <span className="photography-lightbox__counter">
+                                    {String(
+                                        activePhotoIndex + 1
+                                    ).padStart(2, '0')}
+                                    {' / '}
+                                    {String(
+                                        lightboxPhotos.length
+                                    ).padStart(2, '0')}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </main>
-        </div>
+            )}
+        </main>
     );
 };
 

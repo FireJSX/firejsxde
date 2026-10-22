@@ -1,112 +1,825 @@
+
 .videography-page {
-  max-width: 1200px;
+  --video-bg: #090909;
+  --video-text: #f5f5f5;
+  --video-muted: #aaa;
+  --video-line: rgba(255, 255, 255, 0.16);
+
+  background: var(--video-bg);
+  color: var(--video-text);
+  min-height: 100vh;
+  overflow: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 5px;
+  }
+}
+
+// --------------------------------------------------
+// Typography
+// --------------------------------------------------
+
+.videography-eyebrow {
+  display: inline-block;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// --------------------------------------------------
+// Heroes
+// --------------------------------------------------
+
+.videography-hero,
+.videography-project-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 80svh;
+  overflow: hidden;
+  background: #111;
+}
+
+.videography-hero__background,
+.videography-project-hero__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+.videography-project-hero__background {
+  filter: blur(3px) brightness(0.55);
+  transform: scale(1.03);
+}
+
+.videography-hero__shade,
+.videography-project-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.2) 40%,
+          rgba(0, 0, 0, 0.9)
+  );
+}
+
+.videography-hero__content,
+.videography-project-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 130px 6% 85px;
+}
 
-  .video-section {
-    margin-bottom: 80px;
-    text-align: center;
+.videography-hero h1,
+.videography-project-hero h1 {
+  max-width: 1300px;
+  margin: 18px 0 25px;
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(5rem, 13vw, 13rem);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
 
-    h2 {
-      font-size: 4.4rem;      // größer als vorher (2rem)
-      margin-bottom: 12px;
-      padding-left: 0;
+.videography-hero h1 span {
+  color: #aaa;
+}
+
+.videography-hero__content > p,
+.videography-project-hero__heading > p {
+  max-width: 600px;
+  font-family: 'Wire One', sans-serif;
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  line-height: 1.18;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.videography-hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 48px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: white;
+  transition: gap 0.25s ease;
+
+  &:hover {
+    gap: 55px;
+  }
+}
+
+.videography-hero__side-label {
+  position: absolute;
+  z-index: 1;
+  right: 3%;
+  bottom: 100px;
+  writing-mode: vertical-rl;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+// --------------------------------------------------
+// Shared sections
+// --------------------------------------------------
+
+.videography-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 105px 6%;
+  scroll-margin-top: 75px;
+}
+
+.videography-section--featured {
+  padding-top: 125px;
+}
+
+.videography-section__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+
+  h2 {
+    margin: 10px 0 0;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    font-weight: 500;
+    line-height: 0.9;
+  }
+}
+
+.videography-section__counter {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--video-muted);
+}
+
+.videography-section__intro {
+  max-width: 380px;
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  text-align: right;
+  color: #c4c4c4;
+}
+
+// --------------------------------------------------
+// Featured project
+// --------------------------------------------------
+
+.videography-featured {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 580px;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  background: #151515;
+  cursor: pointer;
+  overflow: hidden;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+            transform 0.7s ease,
+            filter 0.7s ease;
+  }
+
+  &:hover > img {
+    transform: scale(1.04);
+    filter: brightness(0.8);
+  }
+}
+
+.videography-featured__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.5) 55%,
+          rgba(0, 0, 0, 0.15)
+  );
+}
+
+.videography-featured__content {
+  position: relative;
+  z-index: 1;
+  max-width: 790px;
+  padding: 75px 7%;
+
+  h3 {
+    margin: 25px 0 15px;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(4rem, 7vw, 8rem);
+    font-weight: 500;
+    line-height: 0.9;
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    max-width: 470px;
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.videography-featured__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  margin-top: 55px;
+  padding: 15px 0;
+  border-bottom: 1px solid white;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.13em;
+}
+
+.videography-featured__index {
+  position: absolute;
+  right: 35px;
+  bottom: 35px;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.15em;
+  color: #ddd;
+}
+
+// --------------------------------------------------
+// Project cards
+// --------------------------------------------------
+
+.videography-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 55px 35px;
+}
+
+.videography-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.videography-card__image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #161616;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+            transform 0.6s ease,
+            filter 0.6s ease;
+  }
+
+  .videography-card:hover & > img {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+  }
+}
+
+.videography-card__category {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  font-family: 'Teko', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.videography-card__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.videography-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  span {
+    padding: 12px 18px;
+    border-bottom: 1px solid white;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .videography-card:hover &,
+  .videography-card:focus-visible & {
+    opacity: 1;
+  }
+}
+
+.videography-card__details {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--video-line);
+}
+
+.videography-card__number {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: var(--video-muted);
+}
+
+.videography-card__text {
+  min-width: 0;
+
+  h3 {
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(2rem, 3vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  p {
+    margin-top: 8px;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    color: var(--video-muted);
+  }
+}
+
+// --------------------------------------------------
+// Project detail hero
+// --------------------------------------------------
+
+.videography-project-hero {
+  min-height: 75svh;
+}
+
+.videography-project-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 75svh;
+}
+
+.videography-project-hero__heading {
+  margin-top: auto;
+}
+
+.videography-project-hero h1 {
+  font-size: clamp(4rem, 9vw, 10rem);
+}
+
+.videography-back,
+.videography-bottom-link {
+  width: fit-content;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.videography-bottom-link {
+  margin-top: 70px;
+}
+
+// --------------------------------------------------
+// Video player
+// --------------------------------------------------
+
+.videography-section--project {
+  padding-bottom: 70px;
+}
+
+.videography-player {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  background: #151515;
+  overflow: hidden;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.videography-player--vertical {
+  max-width: 420px;
+  aspect-ratio: 9 / 16;
+}
+
+.videography-player__preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: #101010;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65);
+    transition: filter 0.3s ease;
+  }
+
+  &:hover > img {
+    filter: brightness(0.45);
+  }
+}
+
+.videography-player__play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 110px;
+  height: 110px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: rgba(15, 15, 15, 0.35);
+  backdrop-filter: blur(18px);
+  transition:
+          transform 0.3s ease,
+          background 0.3s ease;
+
+  .videography-player__preview:hover & {
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.videography-player__triangle {
+  width: 0;
+  height: 0;
+  margin-left: 7px;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 24px solid white;
+}
+
+.videography-player__label {
+  position: absolute;
+  z-index: 1;
+  bottom: 30px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.15em;
+}
+
+.videography-player__notice {
+  max-width: 1100px;
+  margin: 12px auto 0;
+  font-family: 'Teko', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: #aaa;
+}
+
+// --------------------------------------------------
+// Project information
+// --------------------------------------------------
+
+.videography-section--information {
+  border-top: 1px solid var(--video-line);
+}
+
+.videography-project-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+}
+
+.videography-project-info__intro {
+  h2 {
+    margin: 20px 0 30px;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.6rem, 6vw, 6rem);
+    font-weight: 500;
+    line-height: 0.9;
+  }
+
+  p {
+    max-width: 580px;
+    font-family: 'Wire One', sans-serif;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    color: #ccc;
+  }
+}
+
+.videography-project-info__details {
+  ul {
+    margin: 25px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--video-line);
+
+    > span {
+      font-family: 'Teko', sans-serif;
+      font-size: 1.1rem;
+      color: var(--video-muted);
     }
 
-    .video-description {
-      font-size: 2.3rem;      // größer als vorher (1.1rem)
-      margin-bottom: 12px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+    p {
+      font-family: 'Wire One', sans-serif;
+      font-size: 1.85rem;
+      line-height: 1.1;
     }
+  }
+}
 
-    .video-details {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 20px;
-      font-size: 2.15rem;     // größer als vorher (1rem)
-      color: #ccc;
+// --------------------------------------------------
+// Outro
+// --------------------------------------------------
 
-      li {
-        margin-bottom: 6px;
-      }
-    }
+.videography-section--outro {
+  padding-top: 130px;
+  padding-bottom: 150px;
+  border-top: 1px solid var(--video-line);
+  text-align: center;
 
-    .video-wrapper {
-      width: 90%;
-      max-width: 900px;
-      aspect-ratio: 16 / 9;
-      margin: 0 auto;
+  h2 {
+    margin: 25px 0;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(4.5rem, 10vw, 11rem);
+    font-weight: 500;
+    line-height: 0.85;
+  }
 
-      iframe {
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-      }
+  p {
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: 'Wire One', sans-serif;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: #aaa;
+  }
+}
+
+// --------------------------------------------------
+// Tablet
+// --------------------------------------------------
+
+@media (max-width: 1000px) {
+  .videography-featured {
+    min-height: 500px;
+  }
+
+  .videography-grid {
+    gap: 40px 20px;
+  }
+
+  .videography-project-info {
+    gap: 40px;
+  }
+}
+
+// --------------------------------------------------
+// Mobile
+// --------------------------------------------------
+
+@media (max-width: 650px) {
+  .videography-hero,
+  .videography-project-hero {
+    min-height: 75svh;
+  }
+
+  .videography-hero__content,
+  .videography-project-hero__content {
+    padding: 110px 6% 55px;
+  }
+
+  .videography-hero h1 {
+    font-size: clamp(4.4rem, 17vw, 7rem);
+  }
+
+  .videography-project-hero h1 {
+    font-size: clamp(3.5rem, 13vw, 6rem);
+  }
+
+  .videography-hero__side-label {
+    display: none;
+  }
+
+  .videography-section {
+    padding: 70px 5%;
+  }
+
+  .videography-section__heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .videography-section__intro {
+    text-align: left;
+  }
+
+  .videography-featured {
+    min-height: 550px;
+  }
+
+  .videography-featured__shade {
+    background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.94),
+            rgba(0, 0, 0, 0.28)
+    );
+  }
+
+  .videography-featured__content {
+    padding: 50px 7%;
+
+    h3 {
+      font-size: clamp(3.5rem, 12vw, 6rem);
     }
   }
 
-  // Spezielles Layout für vertikale Videos (Hochkant)
-  .vertical-video {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  .videography-featured__index {
+    right: 20px;
+    bottom: 15px;
+  }
+
+  .videography-grid {
+    grid-template-columns: 1fr;
     gap: 30px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+  }
 
-    .video-info {
-      flex: 1;
-      max-width: 480px;
+  .videography-card__overlay {
+    display: none;
+  }
 
-      h2 {
-        font-size: 4.4rem;    // größer als vorher (2rem)
-        margin-bottom: 10px;
-      }
+  .videography-player__play {
+    width: 75px;
+    height: 75px;
+  }
 
-      .video-description {
-        font-size: 2.3rem;    // größer als vorher (1.1rem)
-        margin-bottom: 12px;
-      }
+  .videography-player__triangle {
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 18px;
+  }
 
-      .video-details {
-        font-size: 2.15rem;   // größer als vorher (1rem)
-        color: #ccc;
+  .videography-project-info {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
 
-        li {
-          margin-bottom: 6px;
-        }
-      }
-    }
+  .videography-section--outro {
+    padding-top: 100px;
+    padding-bottom: 110px;
+  }
+}
 
-    .video-wrapper {
-      width: 320px;
-      height: calc(320px * 3);
+@media (prefers-reduced-motion: reduce) {
+  .videography-page *,
+  .videography-page *::before,
+  .videography-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
 
-      iframe {
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-      }
-    }
+/* =========================================
+   VIDEOGRAPHY OUTRO REDESIGN
+   ========================================= */
 
-    @media (max-width: 1000px) {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+.videography-section--outro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-      .video-info {
-        max-width: 100%;
-        margin-bottom: 20px;
-      }
+  padding: 90px 6% 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 
-      .video-wrapper {
-        width: 90vw;
-        height: calc(90vw * 3);
-      }
-    }
+  text-align: center;
+
+  > .videography-eyebrow {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    letter-spacing: 0.22em;
+  }
+
+  h2 {
+    max-width: 850px;
+    margin: 0 0 24px;
+    padding: 0;
+    border: 0;
+
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 6.5rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    text-align: center;
+  }
+
+  p {
+    max-width: 480px;
+    margin: 0;
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.2;
+    text-align: center;
+    color: #aaa;
+  }
+}
+
+@media (max-width: 650px) {
+  .videography-section--outro {
+    padding: 75px 6% 90px;
   }
 }

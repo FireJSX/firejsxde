@@ -1,0 +1,586 @@
+
+.onair-page {
+  --onair-bg: #090909;
+  --onair-muted: #aaa;
+  --onair-line: rgba(255, 255, 255, 0.16);
+
+  min-height: 100vh;
+  background: var(--onair-bg);
+  color: #f5f5f5;
+  overflow: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 5px;
+  }
+}
+
+// Typography
+
+.onair-eyebrow {
+  display: inline-block;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// Hero
+
+.onair-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 80svh;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.onair-hero__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.onair-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.25) 40%,
+          rgba(0, 0, 0, 0.9)
+  );
+}
+
+.onair-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 130px 6% 85px;
+
+  h1 {
+    margin: 18px 0 25px;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(5.5rem, 13vw, 13rem);
+    font-weight: 500;
+    line-height: 0.85;
+
+    span {
+      color: #aaa;
+    }
+  }
+
+  > p {
+    max-width: 600px;
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+    line-height: 1.18;
+    color: rgba(255, 255, 255, 0.88);
+  }
+}
+
+.onair-hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 48px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  color: white;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+
+  &:hover {
+    gap: 55px;
+  }
+}
+
+.onair-hero__side-label {
+  position: absolute;
+  z-index: 1;
+  right: 3%;
+  bottom: 100px;
+  writing-mode: vertical-rl;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+// Sections
+
+.onair-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 105px 6%;
+  scroll-margin-top: 75px;
+}
+
+.onair-section__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 45px;
+
+  h2 {
+    margin: 10px 0 0;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    font-weight: 500;
+    line-height: 0.9;
+  }
+}
+
+.onair-section__counter {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--onair-muted);
+}
+
+.onair-section__intro {
+  max-width: 380px;
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.15;
+  text-align: right;
+  color: #ccc;
+}
+
+// Twitch feature
+
+.onair-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+  gap: 55px;
+  align-items: center;
+}
+
+.onair-feature__info {
+  h3 {
+    margin: 20px 0;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.5rem, 5vw, 6rem);
+    font-weight: 500;
+    line-height: 0.95;
+  }
+
+  p {
+    max-width: 450px;
+    font-family: 'Wire One', sans-serif;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: #ccc;
+  }
+}
+
+.onair-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  margin-top: 38px;
+  padding: 12px 0;
+  border-bottom: 1px solid white;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+.onair-feature__player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 300px;
+  background: #161616;
+  overflow: hidden;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.onair-twitch-preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+          radial-gradient(
+                  circle at 50% 40%,
+                  rgba(120, 65, 180, 0.23),
+                  transparent 60%
+          ),
+          #121212;
+  cursor: pointer;
+}
+
+.onair-twitch-preview__tag {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: #bbb;
+}
+
+.onair-twitch-preview__label,
+.onair-video-preview__label {
+  position: absolute;
+  bottom: 25px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+}
+
+// Shared play button
+
+.onair-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 90px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(12px);
+  transition:
+          transform 0.25s ease,
+          background 0.25s ease;
+}
+
+button:hover .onair-play {
+  transform: scale(1.07);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.onair-play__triangle {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid white;
+}
+
+.onair-privacy-note {
+  margin-top: 14px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: #999;
+}
+
+// Moderation projects
+
+.onair-section--moderation {
+  border-top: 1px solid var(--onair-line);
+}
+
+.onair-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.onair-project {
+  min-width: 0;
+}
+
+.onair-project__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 28px;
+
+  h3 {
+    margin-top: 9px;
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 500;
+    line-height: 0.95;
+  }
+}
+
+.onair-project__number {
+  margin-top: 3px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  color: #999;
+}
+
+.onair-project__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+  gap: 50px;
+  align-items: start;
+}
+
+.onair-project__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #151515;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.onair-video-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #151515;
+  cursor: pointer;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
+  }
+
+  &:hover > img {
+    filter: brightness(0.5);
+  }
+}
+
+.onair-project__info {
+  min-width: 0;
+}
+
+.onair-project__description {
+  margin-bottom: 35px;
+  font-family: 'Wire One', sans-serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  line-height: 1.15;
+  color: #ddd;
+}
+
+.onair-project__info ul {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--onair-line);
+  }
+
+  li > span {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.05rem;
+    color: #999;
+  }
+
+  li p {
+    font-family: 'Wire One', sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.1;
+  }
+}
+
+// Outro
+
+
+/* =========================================
+   ON AIR - OUTRO
+   ========================================= */
+
+.onair-page .onair-outro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 85px 6% 100px;
+  margin: 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+
+  > .onair-eyebrow {
+    display: block;
+    margin: 0 0 18px;
+    padding: 0;
+    border: none;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+
+  > h2 {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    margin: 0 0 20px;
+    padding: 0;
+
+    border: none;
+    border-top: none;
+    border-bottom: none;
+
+    background: transparent;
+    box-shadow: none;
+
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3.5rem, 5.5vw, 5.8rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  > p {
+    width: auto;
+    max-width: 480px;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    line-height: 1.15;
+    text-align: center;
+    color: #aaa;
+  }
+}
+
+@media (max-width: 650px) {
+  .onair-page .onair-outro {
+    padding: 65px 6% 80px;
+
+    > h2 {
+      font-size: clamp(3rem, 12vw, 4.5rem);
+    }
+  }
+}
+
+// Tablet
+
+@media (max-width: 1000px) {
+  .onair-feature,
+  .onair-project__layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+// Mobile
+
+@media (max-width: 650px) {
+  .onair-hero {
+    min-height: 75svh;
+  }
+
+  .onair-hero__content {
+    padding: 110px 6% 55px;
+
+    h1 {
+      font-size: clamp(5rem, 17vw, 7rem);
+    }
+  }
+
+  .onair-hero__side-label {
+    display: none;
+  }
+
+  .onair-section {
+    padding: 70px 5%;
+  }
+
+  .onair-section__heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .onair-section__intro {
+    text-align: left;
+  }
+
+  .onair-feature__player,
+  .onair-twitch-preview {
+    min-height: 220px;
+  }
+
+  .onair-play {
+    width: 70px;
+    height: 70px;
+  }
+
+  .onair-projects {
+    gap: 65px;
+  }
+
+  .onair-project__heading {
+    gap: 15px;
+  }
+
+  .onair-outro {
+    padding: 75px 6% 90px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onair-page *,
+  .onair-page *::before,
+  .onair-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

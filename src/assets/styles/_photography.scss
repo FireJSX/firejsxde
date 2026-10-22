@@ -1,98 +1,901 @@
-.photography * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+.photography-page {
+  --photo-bg: #090909;
+  --photo-text: #f5f5f5;
+  --photo-muted: #a5a5a5;
+  --photo-line: rgba(255, 255, 255, 0.16);
+
+  background: var(--photo-bg);
+  color: var(--photo-text);
+  min-height: 100vh;
+  overflow: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 5px;
+  }
 }
 
-.photography body {
-  margin: 0;
-  padding: 0;
+// Shared typography
+
+.photography-eyebrow {
+  display: inline-block;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.75);
 }
 
-.photography {
-  padding: 20px;
-}
+// Main hero
 
-.photo-gallery {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.photo-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 32%;
-}
-
-.photo-container {
+.photography-hero,
+.photography-series-hero {
   position: relative;
   width: 100%;
+  min-height: 80svh;
+  display: flex;
+  align-items: flex-end;
   overflow: hidden;
-  background-color: #000;
+  background: #111;
 }
 
-.photo {
+.photography-hero__background,
+.photography-series-hero__background {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: brightness(0.78);
 }
 
-.photo-container:hover .photo {
-  filter: blur(5px);
-}
-
-.photo-info {
+.photography-hero__shade,
+.photography-series-hero__shade {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.2) 40%,
+          rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+.photography-hero__content,
+.photography-series-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 130px 6% 85px;
+}
+
+.photography-hero h1,
+.photography-series-hero h1 {
+  font-family: 'Teko', sans-serif;
+  font-weight: 500;
+  font-size: clamp(5.5rem, 13vw, 13rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  margin: 18px 0 25px;
+  overflow-wrap: anywhere;
+}
+
+.photography-hero h1 span {
+  color: #a8a8a8;
+}
+
+.photography-hero__content > p,
+.photography-series-hero__heading > p {
+  max-width: 600px;
+  font-family: 'Wire One', sans-serif;
+  font-size: clamp(1.65rem, 2.6vw, 2.5rem);
+  line-height: 1.18;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.photography-hero__scroll {
+  display: inline-flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 48px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  text-decoration: none;
   color: white;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  transition: gap 0.25s ease;
+
+  &:hover {
+    gap: 55px;
+  }
+
+  span {
+    font-family: sans-serif;
+  }
+}
+
+.photography-hero__side-label {
+  position: absolute;
+  z-index: 1;
+  right: 3%;
+  bottom: 100px;
+  writing-mode: vertical-rl;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+// Sections
+
+.photography-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 105px 6%;
+  scroll-margin-top: 75px;
+}
+
+.photography-section--featured {
+  padding-top: 125px;
+}
+
+.photography-section--archive {
+  border-top: 1px solid var(--photo-line);
+}
+
+.photography-section__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+
+  h2 {
+    margin: 10px 0 0;
+    font-family: 'Teko', sans-serif;
+    font-weight: 500;
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+  }
+}
+
+.photography-section__counter {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--photo-muted);
+}
+
+.photography-section__intro {
+  max-width: 350px;
+  color: #c4c4c4;
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  text-align: right;
+}
+
+.photography-archive-intro {
+  margin: -10px 0 35px;
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.8rem;
+  color: var(--photo-muted);
+}
+
+// Featured story
+
+.photography-featured {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+  padding: 0;
+  border: 0;
+  background: #151515;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease, filter 0.7s ease;
+  }
+
+  &:hover > img {
+    transform: scale(1.045);
+    filter: brightness(0.85);
+  }
+}
+
+.photography-featured__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.87),
+          rgba(0, 0, 0, 0.48) 52%,
+          rgba(0, 0, 0, 0.07)
+  );
+}
+
+.photography-featured__content {
+  position: relative;
+  z-index: 1;
+  max-width: 730px;
+  padding: 75px 7%;
+
+  h3 {
+    margin: 25px 0 15px;
+    font-family: 'Teko', sans-serif;
+    font-weight: 500;
+    font-size: clamp(4.5rem, 9vw, 9rem);
+    line-height: 0.9;
+  }
+
+  p {
+    max-width: 480px;
+    font-family: 'Wire One', sans-serif;
+    font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.photography-featured__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  padding: 15px 0;
+  margin-top: 55px;
+  border-bottom: 1px solid white;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.13em;
+}
+
+.photography-featured__index {
+  position: absolute;
+  right: 35px;
+  bottom: 35px;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.15em;
+  color: #ddd;
+}
+
+// Story cards
+
+.photography-series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px;
+}
+
+.photography-series-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.photography-series-card__image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #171717;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+
+  .photography-series-card:hover & img {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+  }
+}
+
+.photography-series-card__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(15, 15, 15, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  font-family: sans-serif;
+  font-size: 1.4rem;
+}
+
+.photography-series-card__details {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: start;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--photo-line);
+
+  h3 {
+    font-family: 'Teko', sans-serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 3vw, 3.4rem);
+    line-height: 1;
+  }
+
+  p {
+    font-family: 'Wire One', sans-serif;
+    font-size: 1.5rem;
+    color: var(--photo-muted);
+  }
+}
+
+.photography-series-card__number,
+.photography-series-card__count {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: var(--photo-muted);
+}
+
+// Archive and series gallery
+
+.photography-gallery {
+  columns: 3;
+  column-gap: 16px;
+}
+
+.photography-gallery__item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  background: #171717;
+  cursor: zoom-in;
+  overflow: hidden;
+  break-inside: avoid;
+  text-align: left;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(1.025);
+    filter: brightness(0.65);
+  }
+
+  &:hover .photography-gallery__overlay,
+  &:focus-visible .photography-gallery__overlay {
+    opacity: 1;
+  }
+}
+
+.photography-gallery__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 25px;
+  background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.1) 85%
+  );
   opacity: 0;
-  padding: 10px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.photography-gallery__location {
+  font-family: 'Teko', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.photography-gallery__date {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.photography-gallery__description {
+  font-family: 'Wire One', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.photography-gallery__view {
+  margin-top: 15px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}
+
+// Series detail page
+
+.photography-series-hero {
+  min-height: 75svh;
+}
+
+.photography-series-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 75svh;
+}
+
+.photography-series-hero__heading {
+  margin-top: auto;
+}
+
+.photography-back,
+.photography-bottom-link {
+  width: fit-content;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  padding: 10px 0;
+  background: transparent;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.photography-bottom-link {
+  margin-top: 60px;
+}
+
+// Lightbox
+
+.photography-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(15px);
+}
+
+.photography-lightbox__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  max-height: 92dvh;
+  width: 100%;
+
+  > img {
+    display: block;
+    width: 100%;
+    max-height: calc(92dvh - 100px);
+    object-fit: contain;
+    min-height: 0;
+  }
+}
+
+.photography-lightbox__close {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-family: sans-serif !important;
+  font-size: 2rem !important;
+  cursor: pointer;
+}
+
+.photography-lightbox__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+
+  h3 {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  p {
+    font-family: 'Wire One', sans-serif;
+    font-size: 1.5rem;
+    color: #bbb;
+  }
+
+  > span {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.1rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+}
+
+// Tablet
+
+@media (max-width: 1000px) {
+  .photography-gallery {
+    columns: 2;
+  }
+
+  .photography-featured {
+    min-height: 500px;
+  }
+
+  .photography-series-grid {
+    gap: 20px;
+  }
+}
+
+// Mobile
+
+@media (max-width: 650px) {
+  .photography-hero,
+  .photography-series-hero {
+    min-height: 75svh;
+  }
+
+  .photography-hero__content,
+  .photography-series-hero__content {
+    padding: 110px 6% 55px;
+  }
+
+  .photography-hero h1,
+  .photography-series-hero h1 {
+    font-size: clamp(4.6rem, 17vw, 7rem);
+  }
+
+  .photography-hero__side-label {
+    display: none;
+  }
+
+  .photography-section {
+    padding: 70px 5%;
+  }
+
+  .photography-section__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .photography-section__intro {
+    text-align: left;
+  }
+
+  .photography-featured {
+    min-height: 550px;
+  }
+
+  .photography-featured__content {
+    padding: 50px 7%;
+
+    h3 {
+      font-size: clamp(4rem, 15vw, 6.5rem);
+    }
+  }
+
+  .photography-featured__shade {
+    background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.93),
+            rgba(0, 0, 0, 0.28)
+    );
+  }
+
+  .photography-featured__index {
+    bottom: 15px;
+    right: 20px;
+  }
+
+  .photography-series-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .photography-gallery {
+    columns: 1;
+    column-gap: 0;
+  }
+
+  .photography-gallery__item {
+    margin-bottom: 12px;
+  }
+
+  .photography-gallery__overlay {
+    opacity: 1;
+    justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.8),
+            transparent 65%
+    );
+  }
+
+  .photography-gallery__description,
+  .photography-gallery__view {
+    display: none;
+  }
+
+  .photography-gallery__location {
+    font-size: 1.5rem;
+  }
+
+  .photography-lightbox {
+    padding: 15px;
+  }
+
+  .photography-lightbox__info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photography-page *,
+  .photography-page *::before,
+  .photography-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   LIGHTBOX - IMAGE SCALING FIX
+   ========================================= */
+
+.photography-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100dvh;
+  padding: 24px;
+
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.96);
+}
+
+.photography-lightbox__content {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  transition: opacity 0.3s ease;
+
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  max-height: 100%;
+
+  min-width: 0;
+  min-height: 0;
 }
 
-.photo-container:hover .photo-info {
-  opacity: 1;
+.photography-lightbox__image-wrapper {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1 1 0;
+  width: 100%;
+
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    flex-shrink: 1;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }
 
-.photo-location {
-  font-size: 1.5em;
-  font-weight: bold;
+.photography-lightbox__info {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 16px 0 0;
 }
 
-.photo-date {
-  font-size: 1em;
-  margin-top: 5px;
+.photography-lightbox__navigation {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.photo-description {
-  font-size: 0.9em;
-  margin-top: 10px;
+.photography-lightbox__navigation--previous {
+  left: 12px;
 }
 
-@media (max-width: 1000px) {
-  .photo-column {
-    width: 48%;
+.photography-lightbox__navigation--next {
+  right: 12px;
+}
+
+.photography-lightbox__close {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 650px) {
+  .photography-lightbox {
+    padding: 12px;
   }
 
+  .photography-lightbox__content {
+    max-width: 100%;
+  }
+
+  .photography-lightbox__info {
+    padding-top: 12px;
+  }
+
+  .photography-lightbox__navigation--previous {
+    left: 0;
+  }
+
+  .photography-lightbox__navigation--next {
+    right: 0;
+  }
 }
 
-  @media (max-width: 600px) {
-    .photo-column {
-      width: 100%;
-    }
+/* =========================================
+   LIGHTBOX - MINIMAL NAVIGATION
+   ========================================= */
 
+.photography-lightbox__navigation {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 76px;
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+
+  background: rgba(12, 12, 12, 0.5);
+  backdrop-filter: blur(12px);
+
+  color: white;
+  cursor: pointer;
+
+  transition:
+          background 0.25s ease,
+          border-color 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
   }
+
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+  }
+}
+
+.photography-lightbox__navigation--previous {
+  left: 20px;
+}
+
+.photography-lightbox__navigation--next {
+  right: 20px;
+}
+
+.photography-lightbox__chevron {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.photography-lightbox__chevron--left {
+  transform: rotate(-135deg);
+  margin-left: 6px;
+}
+
+.photography-lightbox__chevron--right {
+  transform: rotate(45deg);
+  margin-right: 6px;
+}
+
+@media (max-width: 650px) {
+  .photography-lightbox__navigation {
+    width: 42px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .photography-lightbox__navigation--previous {
+    left: 0;
+  }
+
+  .photography-lightbox__navigation--next {
+    right: 0;
+  }
+
+  .photography-lightbox__chevron {
+    width: 11px;
+    height: 11px;
+  }
+}
