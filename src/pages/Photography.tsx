@@ -1,4 +1,3 @@
-
 import React, {
     useEffect,
     useMemo,
@@ -22,6 +21,8 @@ import '../assets/styles/main.scss';
 // --------------------------------------------------
 
 const getPhotoId = (photo: Photo): number => {
+    if (typeof photo.id === 'number') return photo.id;
+
     const match = photo.src.match(/photo-(\d+)\.webp$/);
     return match ? Number(match[1]) : -1;
 };
