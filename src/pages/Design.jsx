@@ -32,7 +32,7 @@ const projects = [
         note:
             'Independent university concept. Not an official Apple product or commissioned project.',
         tools: 'Adobe Illustrator / Product Visualisation',
-        cover: '/images/design/apple-glasses/02.webp',
+        cover: '/images/design/apple-glasses/cover.webp',
         coverAlt: 'Exploded camera lens illustration for Apple Glasses',
         galleryTitle: 'Inside the concept.',
         images: createImages(
@@ -508,7 +508,7 @@ const Design = () => {
                     <section className="design-hero">
                         <img
                             className="design-hero__background"
-                            src="/images/design/apple-glasses/02.webp"
+                            src="/images/design/apple-glasses/cover.webp"
                             alt=""
                         />
 
