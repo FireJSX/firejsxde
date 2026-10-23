@@ -639,3 +639,43 @@
     }
   }
 }
+.development-page {
+  .development-platform-downloads {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 35px;
+
+    .development-action {
+      margin-top: 0;
+    }
+  }
+
+  .development-windows-download {
+    max-width: 100%;
+  }
+
+  .development-action:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
+  .development-download-status,
+  .development-download-error,
+  .development-feature-scope {
+    margin: 12px 0 0;
+    font-family: 'Wire One', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--dev-muted);
+  }
+
+  .development-download-status:empty {
+    display: none;
+  }
+
+  .development-download-error {
+    color: #f0b5b5;
+  }
+}
