@@ -23,7 +23,7 @@ const windowsParts = [
     },
     {
         "name": "TrailerPlannerDesktop.zip.002",
-        "size": 22005522
+        "size": 22006398
     }
 ];
 
@@ -37,7 +37,7 @@ const loadWindowsArchive = async (
 
     for (const part of windowsParts) {
         const response = await fetch(
-            `/downloads/${part.name}?v=38c293fb`,
+            `/downloads/${part.name}?v=d4217604`,
             { signal }
         );
 
